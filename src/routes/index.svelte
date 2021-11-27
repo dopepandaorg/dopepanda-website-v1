@@ -1,8 +1,7 @@
 <script context="module" lang="ts">
 	export const prerender = true;
-</script>
-
-<script lang="ts">
+    
+    import Alert from '$lib/components/Alert.svelte'
 </script>
 
 <svelte:head>
@@ -10,9 +9,7 @@
 </svelte:head>
 
 <section>
-	<div class="page-banner">
-        Dope Panda's official ASA ID : <a href="https://algoexplorer.io/asset/391379500" target="_blank" rel="nofollow">#391379500</a>
-    </div>
+	<Alert/>
 
     <section id="intro" class="section section--intro">
         <div class="intro-logo">
