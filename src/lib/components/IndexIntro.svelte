@@ -23,7 +23,7 @@
                     Powered by
                 </small>
                 <h2>Building an ecosystem <span class="gradient">for next-gen creators</span></h2>
-                <p>Dope Panda aims to bridge DeFi and Crowdfunding with the Creator Economy. Leveraging the power of <strong>Algorand's ASA</strong> and our <strong>unique approach to subscriptions</strong>; creators can seamlessly share, monetize content and engage with their audience.</p>
+                <p>DopePanda aims to bridge DeFi and Crowdfunding with the Creator Economy. Leveraging the power of <strong>Algorand's ASA</strong> and our <strong>unique approach to subscriptions</strong>; creators can seamlessly share, monetize content and engage with their audience.</p>
             </div>
             <div class="section__cta">
                 <button on:click={navigateRoadmap}>View our Roadmap</button>

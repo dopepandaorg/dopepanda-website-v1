@@ -33,7 +33,7 @@
                 </a>
             </div>
             <div class="section__community__item">
-                <a href="mailto:dopepandaorg@protonmail.com" target="_blank" rel="nofollow">
+                <a href="mailto:team@dopepanda.org" target="_blank" rel="nofollow">
                     <div><img src="/icons/gmail.svg" alt="E-mail"></div>
                     <div>
                         <h4>Send us an email</h4>

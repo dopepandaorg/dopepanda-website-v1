@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Next-gen content creation platform built on Algorand | Dope Panda</title>
+	<title>Next-gen content creation platform built on Algorand | DopePanda</title>
 </svelte:head>
 
 <IndexIntro />

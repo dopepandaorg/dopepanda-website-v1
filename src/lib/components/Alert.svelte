@@ -1,5 +1,5 @@
 <div class="page-alert">
-    Dope Panda's official ASA ID : <a href="https://algoexplorer.io/asset/391379500" target="_blank" rel="nofollow">#391379500</a>
+    DopePanda's official ASA ID : <a href="https://algoexplorer.io/asset/391379500" target="_blank" rel="nofollow">#391379500</a>
 </div>
 
 <style>
