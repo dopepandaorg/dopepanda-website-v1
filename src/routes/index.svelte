@@ -1,13 +1,13 @@
 <script context="module" lang="ts">
 	export const prerender = true
 
-	import IndexNFT from '$lib/components/IndexNFT.svelte'
-	import IndexCommunity from '$lib/components/IndexCommunity.svelte'
-	import IndexFeatures from '$lib/components/IndexFeatures.svelte'
-	import IndexIntro from '$lib/components/IndexIntro.svelte'
-	import IndexRoadmap from '$lib/components/IndexRoadmap.svelte'
-	import IndexToken from '$lib/components/IndexToken.svelte'
-	import IndexDopeverse from '$lib/components/IndexDopeverse.svelte'
+	import IndexNFT from '$lib/components/Index/IndexNFT.svelte'
+	import IndexCommunity from '$lib/components/Index/IndexCommunity.svelte'
+	import IndexFeatures from '$lib/components/Index/IndexFeatures.svelte'
+	import IndexIntro from '$lib/components/Index/IndexIntro.svelte'
+	import IndexRoadmap from '$lib/components/Index/IndexRoadmap.svelte'
+	import IndexToken from '$lib/components/Index/IndexToken.svelte'
+	import IndexDopeverse from '$lib/components/Index/IndexDopeverse.svelte'
 </script>
 
 <svelte:head>
