@@ -8,6 +8,7 @@ export const get: RequestHandler = async ({}) => {
 	
 	let accounts = lpHoldersResponse.accounts.filter(a => ignoredAccounts.indexOf(a.address) === -1)
 	let weeklyReward = 2000000
+	let lpCutoff = 500
 
 	const lpSnapshot1 = [
 		{ address: 'KG3IMAU2WYURUSQ27JM5P3XHRKASFRWY7FWZTVRXUHNWSFWOSCCIAQNE3I', lp: 57832.90 },
@@ -35,15 +36,15 @@ export const get: RequestHandler = async ({}) => {
 	accounts = accounts.map(a => {
 		const balance = (Math.round((parseInt(a.balance) / (1000 * 1000) + Number.EPSILON) * 100) / 100)
 		const snapshotLp = lpSnapshot1.find(lpa => lpa.address === a.address)?.lp || 0
-		const isValid = snapshotLp > 1000 && balance >= snapshotLp
+		const isValid = snapshotLp > lpCutoff && balance >= snapshotLp
 		let status = isValid ? 'Eligible' : 'Not Eligible'
 		
 		if (isValid) {
 			sum += snapshotLp
 		}
 
-		if (snapshotLp === 0 && balance > 1000 && balance > snapshotLp) status = 'New'
-		else if (balance < 1000 && balance > 0) status = 'Not Eligible'
+		if (snapshotLp === 0 && balance > lpCutoff && balance > snapshotLp) status = 'New'
+		else if (balance < lpCutoff && balance > 0) status = 'Not Eligible'
 
 		return {
 			...a,

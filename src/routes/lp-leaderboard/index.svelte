@@ -1,6 +1,4 @@
 <script context="module" lang="ts">
-	export const prerender = true
-
 	import Countdown from '$lib/components/Countdown.svelte'
 
 	import type { Load } from "@sveltejs/kit"
