@@ -26,7 +26,7 @@
 						<div class="nft__meta__price">100 <img src="/icons/algo.svg" alt="Algo" /></div>
 						<div class="nft__meta_qty">Qty: 1</div>
 					</div>
-					<button on:click={() => navigateAb2Gallery('474748986')}>Get it Now</button>
+					<button disabled>Sold Out</button>
 				</div>
 			</div>
 			<div class="nft christmas">
