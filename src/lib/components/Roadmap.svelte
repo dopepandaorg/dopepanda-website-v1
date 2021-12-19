@@ -35,7 +35,7 @@
                 LP Contest
             </div>
             <div class="roadmap__item completed">
-                <small>Community</small>
+                <small>Done</small>
                 Holiday NFTs
             </div>
             <div class="roadmap__item in-progress">
