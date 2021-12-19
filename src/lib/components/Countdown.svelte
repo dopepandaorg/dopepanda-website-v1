@@ -11,7 +11,7 @@ import { onMount } from "svelte";
     const hours = minutes * 60;
     const days = hours * 24;
 
-    const end = new Date('2021-12-19T16:00:00.000Z').getTime()
+    const end = new Date('2021-12-26T16:00:00.000Z').getTime()
     
     onMount(() => {
         const interval = setInterval(() => {

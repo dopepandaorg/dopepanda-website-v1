@@ -29,7 +29,7 @@
 			</h1>
 	
 			<div class="leaderboard__countdown__wrap">
-				<div>Week 1 Reward Distribution <br/>16:00 UTC, 2021-12-19</div>
+				<div>Week 2 Reward Distribution <br/>16:00 UTC, 2021-12-26</div>
 				<Countdown/>
 			</div>
 		</div>
