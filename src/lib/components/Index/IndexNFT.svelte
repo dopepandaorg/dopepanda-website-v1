@@ -182,7 +182,16 @@
             position: absolute;
             right: 0;
             top: 0;
-            transform: translate(40%, -40%);
+            transform: translate(20%,-20%);
+            
+            @media screen and (min-width: 767px) {
+                transform: translate(40%, -40%);
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
         }
 
 		.nft__image {
