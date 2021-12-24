@@ -6,7 +6,7 @@
     export let total: number
     export let description: string
     export let managerId: string
-    export let classes: string
+    export let classes = ''
 
     let qty = total
     let isLoading = true
@@ -42,7 +42,7 @@
     </p>
     <div class="nft__meta">
         <div class="nft__meta__price">{price} <img src="/icons/algo.svg" alt="Algo" /></div>
-        <div class="nft__meta_qty">{qty}/{total}</div>
+        <div class="nft__meta_qty">{ isLoading ? '...' : qty} / {total}</div>
     </div>
     {#if !isLoading}
         {#if qty > 0}
