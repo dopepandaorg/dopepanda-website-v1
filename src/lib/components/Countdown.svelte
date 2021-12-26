@@ -11,14 +11,12 @@ import { onMount } from "svelte";
     const hours = minutes * 60;
     const days = hours * 24;
 
-    const end = new Date('2021-12-26T16:00:00.000Z').getTime()
+    const end = new Date('2022-01-02T16:00:00.000Z').getTime()
     
     onMount(() => {
-        const interval = setInterval(() => {
+        const tick = () => {
             const now = new Date().getTime()
             const difference = end - now
-
-            console.log('difference', difference)
             
             if (difference < 0) {
                 clearInterval(interval)
@@ -33,7 +31,10 @@ import { onMount } from "svelte";
             countdownHours = String(Math.floor((difference % days) / hours)).padStart(2, '0')
             countdownMinutes = String(Math.floor((difference % hours) / minutes)).padStart(2, '0')
             countdownSeconds = String(Math.floor((difference % minutes) / seconds)).padStart(2, '0')
-        }, 1000)
+        }
+
+        const interval = setInterval(tick, 1000)
+        tick()
     })
 
 </script>

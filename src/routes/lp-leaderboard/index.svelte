@@ -5,7 +5,9 @@
 	export const load: Load = async ({ fetch }) => {
 		return ({
 			props: {
-				accounts: await fetch('/lp-leaderboard.json').then(response => response.json()).then(body => body.accounts)
+				... await fetch('/lp-leaderboard.json')
+					.then(response => response.json())
+					.then(body => body)
 			}
 		})
 	}
@@ -13,6 +15,7 @@
 
 <script lang="ts">
 	export let accounts: any[]
+	export let week: number
 </script>
 
 <svelte:head>
@@ -27,11 +30,14 @@
 			<h1 class="leaderboard__title">
 				Liquidity Provider's <br/>Leaderboard
 			</h1>
-	
-			<div class="leaderboard__countdown__wrap">
-				<div>Week 2 Reward Distribution <br/>16:00 UTC, 2021-12-26</div>
-				<Countdown/>
+
+			<div>
+				<div class="leaderboard__countdown__wrap">
+					<div>Week {week} Reward Distribution <br/>16:00 UTC, 2021-12-26</div>
+					<Countdown/>
+				</div>
 			</div>
+	
 		</div>
 	</div>
 </div>
@@ -44,8 +50,8 @@
 					<th>Rank</th>
 					<th>Address</th>
 					<th>Live Stake</th>
-					<th>Snapshot</th>
-					<th>Reward</th>
+					<th>Week {week} <br/> Snapshot</th>
+					<th>Upcoming <br/> Reward</th>
 					<th>Status</th>
 				</tr>
 			</thead>
@@ -59,7 +65,9 @@
 								{i + 1}
 							{/if}
 						</td>
-						<td>{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}</td>
+						<td>
+							{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
+						</td>
 						<td>
 							{account.balance.toLocaleString()}
 						</td>
@@ -195,6 +203,28 @@
 				@media screen and (min-width: 767px) {
 					font-size: 0.75rem;
 				}
+
+				// &.tag {
+				// 	font-size: 0.75rem;
+				// 	display: inline-block;
+				// 	padding: 0.25rem 0.5rem;
+				// 	background-color: #fff;
+				// 	border-radius: 4px;
+				// 	margin-top: 0.25rem;
+				// 	opacity: 1;
+
+				// 	&.eligible {
+				// 		background-color: green;
+				// 	}
+
+				// 	&.not.eligible {
+				// 		background-color: red;
+				// 	}
+
+				// 	&.new {
+				// 		background-color: blue;
+				// 	}
+				// }
 			}
 		}
 
