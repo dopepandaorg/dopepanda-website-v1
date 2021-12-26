@@ -1,63 +1,29 @@
 import type { RequestHandler } from "@sveltejs/kit"
+import { ignoredAccounts, weeklyReward, lpCutoff, snapshots } from './lpSnapshot.json'
+
+const LP_HOLDER_API = `https://indexer.algoexplorerapi.io/stats/v2/accounts/rich-list?limit=100&asset-id=391387065`
+// const LP_POOL_API = `https://mainnet.analytics.tinyman.org/api/v1/pools/W5FCB4QMIMJBGACPQXCTCT265FPYH2ZXQGVHPKCPHOH7NCXQHIXSHTN4SE`
 
 export const get: RequestHandler = async ({}) => {
-	const ignoredAccounts = ['W5FCB4QMIMJBGACPQXCTCT265FPYH2ZXQGVHPKCPHOH7NCXQHIXSHTN4SE', 'M5TWBEMR35KXIQ25R4QW3A5FH6BA7P2QUYUDIIKW3VV2JP3BSRPVZOQFIQ']
-
-	const lpHoldersRequest = await fetch('https://indexer.algoexplorerapi.io/stats/v2/accounts/rich-list?limit=100&asset-id=391387065')
+	const lpHoldersRequest = await fetch(LP_HOLDER_API)
 	const lpHoldersResponse = await lpHoldersRequest.json()
+
+	// const lpPoolRequest = await fetch(LP_POOL_API)
+	// const lpPoolResponse = await lpPoolRequest.json()
+
+	// const lpTokensIssued = lpPoolResponse.current_issued_liquidity_assets
+	// const dpandaTokens = lpPoolResponse.current_asset_1_reserves
+	// const algoTokens = lpPoolResponse.current_asset_2_reserves
+	// console.log('lpPoolResponse', dpandaTokens / lpTokensIssued, algoTokens / lpTokensIssued, (((dpandaTokens / (1000 * 1000)) / 2000000) / 7 * 365))
 	
 	let accounts = lpHoldersResponse.accounts.filter(a => ignoredAccounts.indexOf(a.address) === -1)
-	let weeklyReward = 2000000
-	let lpCutoff = 500
-
-	const lpSnapshot1 = [
-		{ address: 'KG3IMAU2WYURUSQ27JM5P3XHRKASFRWY7FWZTVRXUHNWSFWOSCCIAQNE3I', lp: 57832.90 },
-		{ address: 'TZZ5JUWDDJIKPXKQV4CCQFVUYIMM7SA22BAIMFGQAJ7HJCZRW3DTJET7SU', lp: 52836.86 },
-		{ address: 'R2HPT36QHQUDAKJ2GICQLNDRKQB34RMJRXXUBVSMPMKFHOEU6GZTSJ6KDY', lp: 45149.67 },
-		{ address: 'JXS3QGN2QR5C2245ULTM6K27BKULX3UULPWM5OHTGZ5JPDIIYPD7FT25NQ', lp: 39294.75 },
-		{ address: 'DNSPN5TGRJ3QIXZM5P77KPTYOJDTQP3QPUTMYXF3R7JE74LDM4XOOG7D2I', lp: 24687.13 },
-		{ address: 'WPHTZTXYEJA3LTEZHIBBK7ZGOQAUCM2ZX4KWW3KTHCK4C733OO2G4GOKHM', lp: 20346.80 },
-		{ address: 'FQJJWF6HFEDGQWZI3OPDWVKAUJT4R62LTOZSNHOZ3OLGYOURSSOXSAPOKM', lp: 11867.76 },
-		{ address: 'VWDWZYRLVVH7GM57LHWYYIMSZLTWYNXKICZ6VOMKWOJM6BSOB6YQMS5N5M', lp: 9274.94 },
-		{ address: 'BYWF63NV66HMKPNG4QXLUFMPLC7JPICVWU436UGZND4GZY6NVHLPQEVNFI', lp: 9222.38 },
-		{ address: 'JY5N4T4F4JG3MC4VXMMWVVCTXYHU3HRU6UAQW5UWK2YFLM2G6HI7YP74UY', lp: 9094.86 },
-		{ address: 'LHSISWWX3ZYUIFLBUMOSK2WX2W4IJCMOEVRC7VAXOP6NET4A47CWVEPPOI', lp: 4541.09 },
-		{ address: 'FVOOKZB5ATLKJ6XNEYICTLLKJ7TGEZUQJ424NXZQ3IB257L7BX2E7UYDTI', lp: 4503.14 },
-		{ address: 'BS3AF5G7LACQ53L35HWMCZPGNTIQG2VVUVCGYU4UGKM7UEOOGXEXAZ2DLM', lp: 4006.93 },
-		{ address: 'E5KWCGPO3XDZHNOZC5DVCYQHF73HXZFLN652JVI457W53SJGBIHG6TD4LU', lp: 3756.10 },
-		{ address: 'UXCUQ7GEK7LYB7KRFQJERH4FBDYUH2WTVSKANA22TEH5G7FRNDUOPEHZ3U', lp: 3632.33 },
-		{ address: 'NQS3SITZZT3LC6PFHOVMWZDICCYVNYYE7I6SUOIGAB2TSDRJ2G5NW46W7A', lp: 1917.29 },
-		{ address: 'L2LBVZNMXIICQC3BAHTHRKSBFCWB43KEFHJQQ45ON6OHYEJORBWUKJFM64', lp: 1378.03 },
-		{ address: '73WFVQ45UQZBS7BH6MJAWDOXQOZRW6PA4LM7Q3PRKZX3BHAPIQEWKU6UAY', lp: 795.67 },
-		{ address: 'NNQQODFGN7ABPO4F5757PCQFIF556OQTHOJCMSZB3EDLFVAHKMT6BSUIG4', lp: 31.11 }
-	]
-
-	const lpSnapshot2 = [
-		{ address: 'KG3IMAU2WYURUSQ27JM5P3XHRKASFRWY7FWZTVRXUHNWSFWOSCCIAQNE3I', lp: 57832.90 },
-		{ address: 'TZZ5JUWDDJIKPXKQV4CCQFVUYIMM7SA22BAIMFGQAJ7HJCZRW3DTJET7SU', lp: 52836.86 },
-		{ address: 'R2HPT36QHQUDAKJ2GICQLNDRKQB34RMJRXXUBVSMPMKFHOEU6GZTSJ6KDY', lp: 45149.67 },
-		{ address: 'FQJJWF6HFEDGQWZI3OPDWVKAUJT4R62LTOZSNHOZ3OLGYOURSSOXSAPOKM', lp: 27799.28 },
-		{ address: 'DNSPN5TGRJ3QIXZM5P77KPTYOJDTQP3QPUTMYXF3R7JE74LDM4XOOG7D2I', lp: 24687.13 },
-		{ address: 'WPHTZTXYEJA3LTEZHIBBK7ZGOQAUCM2ZX4KWW3KTHCK4C733OO2G4GOKHM', lp: 20346.80 },
-		{ address: 'VWDWZYRLVVH7GM57LHWYYIMSZLTWYNXKICZ6VOMKWOJM6BSOB6YQMS5N5M', lp: 9274.94 },
-		{ address: 'BYWF63NV66HMKPNG4QXLUFMPLC7JPICVWU436UGZND4GZY6NVHLPQEVNFI', lp: 9222.38 },
-		{ address: 'JY5N4T4F4JG3MC4VXMMWVVCTXYHU3HRU6UAQW5UWK2YFLM2G6HI7YP74UY', lp: 9094.86 },
-		{ address: 'P3M6R6VJOELAJGUDY4VA4DQZFSR54HPH22UI57DJAPEFCARGVU2FLZUIHE', lp: 6775.50 },
-		{ address: 'FVOOKZB5ATLKJ6XNEYICTLLKJ7TGEZUQJ424NXZQ3IB257L7BX2E7UYDTI', lp: 4503.14 },
-		{ address: 'BS3AF5G7LACQ53L35HWMCZPGNTIQG2VVUVCGYU4UGKM7UEOOGXEXAZ2DLM', lp: 4006.93 },
-		{ address: 'E5KWCGPO3XDZHNOZC5DVCYQHF73HXZFLN652JVI457W53SJGBIHG6TD4LU', lp: 3756.10 },
-		{ address: 'UXCUQ7GEK7LYB7KRFQJERH4FBDYUH2WTVSKANA22TEH5G7FRNDUOPEHZ3U', lp: 3632.33 },
-		{ address: 'Q4MBHKMVLWJ4DIFL6QCBIYZND446U4HKCEM5XONAQ5V4KLK7C4V3NWCPEQ', lp: 2144.66 },
-		{ address: 'NQS3SITZZT3LC6PFHOVMWZDICCYVNYYE7I6SUOIGAB2TSDRJ2G5NW46W7A', lp: 1917.29 },
-		{ address: '73WFVQ45UQZBS7BH6MJAWDOXQOZRW6PA4LM7Q3PRKZX3BHAPIQEWKU6UAY', lp: 1502.76 },
-		{ address: 'L2LBVZNMXIICQC3BAHTHRKSBFCWB43KEFHJQQ45ON6OHYEJORBWUKJFM64', lp: 1378.03 },
-		{ address: 'NNQQODFGN7ABPO4F5757PCQFIF556OQTHOJCMSZB3EDLFVAHKMT6BSUIG4', lp: 31.11 }
-	]
+	const latestSnapshot = snapshots[snapshots.length - 1]
+	const latestWeek = snapshots.length
 
 	let sum: number = 0
 	accounts = accounts.map(a => {
 		const balance = (Math.round((parseInt(a.balance) / (1000 * 1000) + Number.EPSILON) * 100) / 100)
-		const snapshotLp = lpSnapshot2.find(lpa => lpa.address === a.address)?.lp || 0
+		const snapshotLp = latestSnapshot.find(lpa => lpa.address === a.address)?.lp || 0
 		const isValid = snapshotLp > lpCutoff && balance >= snapshotLp
 		let status = isValid ? 'Eligible' : 'Not Eligible'
 		
@@ -88,6 +54,5 @@ export const get: RequestHandler = async ({}) => {
 
 	accounts.sort((a, b) => b.snapshotLp - a.snapshotLp)
 
-	return {
-		body: { accounts, sum } };
+	return { body: { week: latestWeek, accounts, sum } }
 };
