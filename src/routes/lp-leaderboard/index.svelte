@@ -1,7 +1,11 @@
 <script context="module" lang="ts">
-	import Countdown from '$lib/components/Countdown.svelte'
-
 	import type { Load } from "@sveltejs/kit"
+	import { goto } from '$app/navigation'
+	import Countdown from '$lib/components/Countdown.svelte'
+	import LPLeaderboardStats from '$lib/components/LPLeaderboard/LPLeaderboardStats.svelte'
+	import LpLeaderboardFaq from "$lib/components/LPLeaderboard/LPLeaderboardFAQ.svelte"
+	import LpLeaderboardTable from "$lib/components/LPLeaderboard/LPLeaderboardTable.svelte"
+
 	export const load: Load = async ({ fetch }) => {
 		return ({
 			props: {
@@ -11,92 +15,54 @@
 			}
 		})
 	}
+	
+	const goBack = () => {
+		goto('/')
+	}
 </script>
 
 <script lang="ts">
 	export let accounts: any[]
 	export let week: number
+	export let totalLP: number
+	export let totalReward: number
+	export let dpandaFactor: number
 </script>
 
 <svelte:head>
 	<title>Liquidity Provider's Leaderboard | DopePanda</title>
 </svelte:head>
 
-
 <div class="leaderboard__header__wrap">
 	<div class="container">
-
 		<div class="leaderboard__header">
-			<h1 class="leaderboard__title">
-				Liquidity Provider's <br/>Leaderboard
-			</h1>
-
 			<div>
-				<div class="leaderboard__countdown__wrap">
-					<div>Week {week} Reward Distribution <br/>16:00 UTC, 2021-12-26</div>
-					<Countdown/>
-				</div>
+				<button class="back" on:click={goBack}>Back</button>
+
+				<h1 class="leaderboard__title">
+					Liquidity Provider's <br/>Leaderboard
+				</h1>
 			</div>
-	
+
+			<div class="leaderboard__countdown__wrap">
+				<div>
+					<strong>Week {week} / 6 </strong> reward distribution on 16:00 UTC, 2021-12-26
+				</div>
+				<Countdown/>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div class="container">
-	<div class="leaderboard__table">
-		<table>
-			<thead>
-				<tr>
-					<th>Rank</th>
-					<th>Address</th>
-					<th>Live Stake</th>
-					<th>Week {week} <br/> Snapshot</th>
-					<th>Upcoming <br/> Reward</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each accounts as account, i}
-					<tr>
-						<td>
-							{#if i < 3}
-								<img class="rank-image" src="/images/rank-{i + 1}.svg" alt="{"" + i + 1}"/>							
-							{:else}
-								{i + 1}
-							{/if}
-						</td>
-						<td>
-							{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
-						</td>
-						<td>
-							{account.balance.toLocaleString()}
-						</td>
-						<td>
-							{account.snapshotLp.toLocaleString()}
+<div class="container">	
+	<LPLeaderboardStats totalLP={totalLP} totalReward={totalReward}/>
+	
+	<LpLeaderboardTable week={week} accounts={accounts} dpandaFactor={dpandaFactor}/>
 
-							{#if account['%'] > 0}
-								<span>{(account['%'] * 100).toFixed(2)}%</span>
-							{/if}
-						</td>
-						<td>
-							{#if account.pendingReward > 0}
-								{parseInt(account.pendingReward).toLocaleString()}
-								<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-								<span>DPANDA</span>
-							{:else}
-								N/A
-							{/if}
-						</td>
-						<td>{account.status}</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</div>
+	<LpLeaderboardFaq />
 </div>
 
 <style lang="scss">
-
 	.container {
 		@media screen and (min-width: 1200px) {
 			max-width: 90%;
@@ -106,26 +72,47 @@
 	.leaderboard__header__wrap {
 		background: linear-gradient(109.08deg, #FD9D5D 0%, #FD2CA0 49.53%, #3397FF 104.51%);
 		color: #fff;
+
+		.leaderboard__header {
+			display: flex;
+			flex-direction: column;
+			
+			@media screen and (min-width: 767px) {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+			}
+	
+			> div{
+				flex: 1;
+			}
+	
+			.back {
+				padding: 0.75rem 1.75rem;
+				border-radius: 10px;
+				border: 2px solid #fff;
+				color: #fff;
+				background-color: transparent;
+				margin-bottom: 0.75rem;
+				transition: all 0.3s;
+	
+				&:hover {
+					cursor: pointer;
+					background-color: #fff;
+					color: #444;
+				}
+			}
+		}
 	}
 
-	.leaderboard__header {
-		display: flex;
-		flex-direction: column;
-		
+	.leaderboard__title {
+		font-size: 1.875rem;
+
 		@media screen and (min-width: 767px) {
-			flex-direction: row;
-			align-items: center;
-			justify-content: space-between;
-		}
-
-		> h1 {
-			flex: 2;
-		}
-
-		> div{
-			flex: 1;
+			font-size: 3rem;
 		}
 	}
+
 
 	.leaderboard__countdown__wrap {
 		display: flex;
@@ -138,110 +125,57 @@
 			text-align: right;
 			margin-top: 0;
 		}
-	}
 
-	.leaderboard__title {
-		font-size: 1.875rem;
-
-		@media screen and (min-width: 767px) {
-			font-size: 3rem;
+		strong {
+			display: block;
+			font-size: 1.25rem;
+			padding-bottom: 0.5rem;
 		}
 	}
 
-	table {
-		width: 100%;
-		text-align: center;
-		border-collapse: collapse;
-		border-radius: 10px;
-		overflow: hidden;
-		background: linear-gradient(109.08deg, #FD9D5D 0%, #FD2CA0 29.53%, #3397FF 104.51%);
+	// .leaderboard__weeks {
+	// 	display: flex;
+	// 	justify-content: space-between;
+	// 	margin-bottom: 2rem;
 
-		tbody tr:first-child {
-			td {
-				font-weight: bold;
-				background-color: transparent;
-			}
-		}
+	// 	.leaderboard__week {
+	// 		position: relative;
+	// 		padding: 1.5rem 1rem 0;
+	// 		text-align: center;
 
-		thead tr, tbody tr {
-			@media screen and (max-width: 767px) {
-				th:nth-child(1), td:nth-child(1),
-				th:nth-child(3), td:nth-child(3),
-				th:nth-child(4), td:nth-child(4) {
-					display: none;
-				}
-			}
-		}
+	// 		&::before {
+	// 			content: '';
+	// 			position: absolute;
+	// 			top: 0;
+	// 			left: 50%;
+	// 			width: 1.5rem;
+	// 			height: 1.5rem;
+	// 			margin-left: -0.75rem;
+	// 			background: linear-gradient(109.08deg, rgba(253, 157, 93, 0.25) 0%, rgba(253, 44, 160, 0.25) 49.53%, rgba(51, 151, 255, 0.25) 104.51%), #555555;
+	// 			border-radius: 50%;
+	// 		}
 
-		tr th {
-			font-family: 'HK_Grotesk', 'sans-serif';
-			font-size: 0.875rem;
-			font-weight: 500;
-			color: #fff;
-			background-color: #000;
-			padding: 1.75rem 1rem;
-		}
+	// 		&::after {
+	// 			content: '';
+	// 			position: absolute;
+	// 			width: 1000px;
+	// 			height: 2px;
+	// 			top: 0.75rem;
+	// 			left: 50%;
+	// 			margin-left: 0.75rem;
+	// 			background: linear-gradient(109.08deg, rgba(253, 157, 93, 0.25) 0%, rgba(253, 44, 160, 0.25) 49.53%, rgba(51, 151, 255, 0.25) 104.51%), #555555;
+	// 		}
 
-		tr td {
-			color: #fff;
-			background-color: #555;
-			font-size: 0.75rem;
-			padding: 1rem 0.75rem;
-			border-top: 1px solid #444;
-			
-			@media screen and (min-width: 767px) {
-				font-size: 1rem;
-				padding: 1.5rem 1rem;
-			}
+	// 		&:last-child {
+	// 			&::after {
+	// 				background: #fff;
+	// 			}
+	// 		}
 
-			span {
-				display: block;
-				font-size: 0.625rem;
-				padding-top: 0.25rem;
-				opacity: 0.5;
-
-				@media screen and (min-width: 767px) {
-					font-size: 0.75rem;
-				}
-
-				// &.tag {
-				// 	font-size: 0.75rem;
-				// 	display: inline-block;
-				// 	padding: 0.25rem 0.5rem;
-				// 	background-color: #fff;
-				// 	border-radius: 4px;
-				// 	margin-top: 0.25rem;
-				// 	opacity: 1;
-
-				// 	&.eligible {
-				// 		background-color: green;
-				// 	}
-
-				// 	&.not.eligible {
-				// 		background-color: red;
-				// 	}
-
-				// 	&.new {
-				// 		background-color: blue;
-				// 	}
-				// }
-			}
-		}
-
-		img.rank-image {
-			width: 2.25rem;
-			height: 2.25rem;
-		}
-
-		img.token-image {
-			position: relative;
-			top: 2px;
-			width: 1.125rem;
-			height: 1.125rem;
-
-			@media screen and (max-width: 767px) {
-				display: none;
-			}
-		}
-	}
+	// 		span {
+	// 			display: flex;
+	// 			margin-top: 0.5rem;
+	// 		}
+	// 	}
+	// }
 </style>

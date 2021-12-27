@@ -1,0 +1,28 @@
+{
+    "faq": [
+        {
+            "title": "Am I eligible for DPANDA Rewards?",
+            "content": "LP Holders are only eligible if they've maintained or added to their LP Holdings. If you've removed or reduced your LP Holdings after the Snapshot you'll not be eligible to receive DPANDA LP rewards."
+        },
+        {
+            "title": "When can I receive my rewards?",
+            "content": "If you're eligible, you will receive your rewards on Sunday, between 4pm - 5pm UTC of the respective week."
+        },
+        {
+            "title": "What is my Live Stake?",
+            "content": "Your live stake is the amount of DPANDA tokens held by you in the Tinyman DPANDA <-> ALGO LP Pool. This is different to the 'Snapshot' which is a record of your committed LP taken at 4pm UTC on Sunday on the respective week."
+        },
+        {
+            "title": "How are rewards calculated?",
+            "content": "Each week DopePanda distributes 2,000,000 DPANDA tokens to its eligible LP Holders. The reward for each eligible LP holder is calculated by their share of LP at each Weekly Snapshot. <br/><br/> eg. If “Address ABC” holds 5% of the Tinyman DPANDA <-> ALGO LP Pool (minus DopePanda's Official LP), they are eligible to receive 5% of 2,000,000 DPANDA tokens every week."
+        },
+        {
+            "title": "I can't see my address? Do I have the right LP Setup ?",
+            "content": "Please make sure you've searched the first and last 6 characters of your address on the LP Leaderboard. Additionally, be sure to double check the ASA ID when buying DPANDA tokens and setting up your LP. <br/> <br/> The DPANDA ASA ID is 391379500."
+        },
+        {
+            "title": "I haven't receive my rewards?",
+            "content": "If you're eligible and have not received your rewards, please contact team@dopepanda.org, or reach out to our Admins on Discord, Reddit or Telegram."
+        }
+    ]
+}
