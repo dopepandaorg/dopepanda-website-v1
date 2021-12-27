@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { goto } from "$app/navigation"
+
     const navigateRoadmap = () => {
         document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' })
     }
@@ -7,6 +9,9 @@
     }
     const navigateNFT = () => {
         document.getElementById('nft').scrollIntoView({ behavior: 'smooth' })
+    }
+    const navigateLeaderboard = () => {
+        window.location.href = '/lp-leaderboard'
     }
 </script>
 
@@ -26,6 +31,7 @@
                 <p>DopePanda aims to bridge DeFi and Crowdfunding with the Creator Economy. Leveraging the power of <strong>Algorand's ASA</strong> and our <strong>unique approach to subscriptions</strong>; creators can seamlessly share, monetize content and engage with their audience.</p>
             </div>
             <div class="section__cta">
+                <button on:click={navigateLeaderboard}>LP Leaderboard <img src="/images/badge-new.svg" alt="New"></button>
                 <button on:click={navigateRoadmap}>View our Roadmap</button>
                 <button on:click={navigateCommunity}>Join our Community</button>
             </div>
@@ -120,6 +126,7 @@
     .section__cta {
         display: flex;
         flex-direction: column;
+        position: relative;
 
         @media screen and (min-width: 768px) {
             flex-direction: row;
@@ -128,6 +135,7 @@
         }
 
         button {
+            position: relative;
             margin-top: 1rem;
             font-size: 1rem;
             font-weight: 500;
@@ -149,6 +157,14 @@
             &:hover {
                 cursor: pointer;
                 background-position: 100% 100%;
+            }
+
+            img {
+                position: absolute;
+                width: 3rem;
+                height: 3rem;
+                right: -1.25rem;
+                top: -1.25rem;
             }
         }
     }
