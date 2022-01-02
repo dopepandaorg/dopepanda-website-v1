@@ -46,7 +46,7 @@
 
 			<div class="leaderboard__countdown__wrap">
 				<div>
-					<strong>Week {week} / 6 </strong> reward distribution on 16:00 UTC, 2021-12-26
+					<strong>Week {week - 1} / 6 </strong> reward distribution on 16:00 UTC, 2022-01-03
 				</div>
 				<Countdown/>
 			</div>
@@ -55,6 +55,14 @@
 </div>
 
 <div class="container">	
+	<div class="warning">
+		<img src="/icons/alert.svg" alt="Alert"/>
+		Due to the recent issues with Tinyman Liquidity Pools, we're following Tinyman team's advice and encouraging our community to remove their liquidity from the DPANDA / ALGO pool on Tinyman.
+		<br/><br/>
+		We have taken an early LP Snapshot at 10:30 am UTC on Sunday 2nd Jan, 2022. All eligible holders at the time of snapshot will receive their Week 3 LP rewards. 
+		<br/><br/>The LP contest will be paused for Week 4 until further notice.
+	</div>
+
 	<LPLeaderboardStats totalLP={totalLP} totalReward={totalReward}/>
 	
 	<LpLeaderboardTable week={week} accounts={accounts} dpandaFactor={dpandaFactor}/>
@@ -66,6 +74,29 @@
 	.container {
 		@media screen and (min-width: 1200px) {
 			max-width: 90%;
+		}
+	}
+
+	.warning {
+		font-size: 1.125rem;
+		margin-bottom: 2rem;
+		color: #fff;
+		padding: 1.5rem 1.75rem;
+		border-radius: 4px;
+		line-height: 1.5;
+		background: linear-gradient(180deg, #FF4343 0%, #FF4343 100%);
+
+		img {
+			display: block;
+			margin-bottom: 1rem;
+			width: 3rem;
+			height: 3rem;
+		}
+
+		@media screen and (min-width: 767px) {
+			font-size: 1.25rem;
+			margin-bottom: 4rem;
+			padding: 1.5rem 2.25rem;
 		}
 	}
 

@@ -10,7 +10,7 @@
 			<tr>
 				<th>Rank</th>
 				<th>Address</th>
-				<th>Live Stake <br/>(DPANDA)</th>
+				<th>Week {week-1} <br/>Snapshot</th>
 				<th>Week {week} <br/> Snapshot</th>
 				<th>Upcoming <br/> Reward</th>
 				<th>Status</th>
@@ -30,15 +30,15 @@
 						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
 					</td>
 					<td>
-						{Math.round(account.balance * dpandaFactor).toLocaleString()}
-						<span>DPANDA</span>
-					</td>
-					<td>
-						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
+						{Math.round(account.preSnapshotLp).toLocaleString()}
 
 						{#if account['%'] > 0}
 							<span>{(account['%'] * 100).toFixed(2)}%</span>
 						{/if}
+					</td>
+					<td>
+						{Math.round(account.snapshotLp).toLocaleString()}
+						<span>Tinyman LP Token</span>
 					</td>
 					<td>
 						{#if account.pendingReward > 0}
@@ -75,7 +75,7 @@
 		thead tr, tbody tr {
 			@media screen and (max-width: 767px) {
 				th:nth-child(1), td:nth-child(1),
-				th:nth-child(3), td:nth-child(3),
+				th:nth-child(4), td:nth-child(4),
 				th:nth-child(6), td:nth-child(6) {
 					display: none;
 				}
