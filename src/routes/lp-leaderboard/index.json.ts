@@ -20,25 +20,28 @@ export const get: RequestHandler = async ({}) => {
 	
 	let accounts = lpHoldersResponse.accounts.filter(a => ignoredAccounts.indexOf(a.address) === -1)
 	const latestSnapshot = snapshots[snapshots.length - 1]
+	const preLatestSnapshot = snapshots[snapshots.length - 2]
 	const latestWeek = snapshots.length
 
 	let sum: number = 0
 	accounts = accounts.map(a => {
 		const balance = (Math.round((parseInt(a.balance) / (1000 * 1000) + Number.EPSILON) * 100) / 100)
+		const preSnapshotLp = preLatestSnapshot.find(plpa => plpa.address === a.address)?.lp || 0
 		const snapshotLp = latestSnapshot.find(lpa => lpa.address === a.address)?.lp || 0
-		const isValid = snapshotLp > lpCutoff && balance >= snapshotLp
+		const isValid = preSnapshotLp > lpCutoff && snapshotLp >= preSnapshotLp 
 		let status = isValid ? 'Eligible' : 'Not Eligible'
 		
 		if (isValid) {
-			sum += snapshotLp
+			sum += preSnapshotLp
 		}
 
-		if (snapshotLp === 0 && balance > lpCutoff && balance > snapshotLp) status = 'New'
+		if (preSnapshotLp === 0 && snapshotLp > lpCutoff && snapshotLp > preSnapshotLp) status = 'New'
 		else if (balance < lpCutoff && balance > 0) status = 'Not Eligible'
 
 		return {
 			...a,
 			snapshotLp,
+			preSnapshotLp,
 			balance,
 			isValid,
 			status
@@ -54,13 +57,13 @@ export const get: RequestHandler = async ({}) => {
 		}
 	})
 
-	accounts.sort((a, b) => b.snapshotLp - a.snapshotLp)
+	accounts.sort((a, b) => b.preSnapshotLp - a.preSnapshotLp)
 
 	return { body: {
 		week: latestWeek,
 		accounts, 
 		sum,
-		totalLP: Math.round(sum * dpandaFactor), 
+		totalLP: Math.round(sum), 
 		totalReward: 2000000,
 		dpandaFactor, 
 		algoFactor } }

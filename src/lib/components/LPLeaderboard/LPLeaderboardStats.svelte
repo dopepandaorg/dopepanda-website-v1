@@ -16,8 +16,8 @@
         </div>
     </div>
     <div class="leaderboard__stat">
-        <div class="leaderboard__stat__label">Total LP</div>
-        <div class="leaderboard__stat__value">{totalLP.toLocaleString()}</div>
+        <div class="leaderboard__stat__label">Total LP as of Week 3</div>
+        <div class="leaderboard__stat__value">{totalLP.toLocaleString()} <span>TM1POOL Tokens</span></div>
     </div>
     <div class="leaderboard__stat">
         <div class="leaderboard__stat__label">Weekly Reward</div>
@@ -25,7 +25,7 @@
     </div>
     <div class="leaderboard__stat">
         <div class="leaderboard__stat__label">Return-on-LP</div>
-        <div class="leaderboard__stat__value">{Math.round(((totalReward / totalLP) / 7 * 365) * 100).toLocaleString()}% <span>(APY)</span></div>
+        <div class="leaderboard__stat__value">N/A</div>
     </div>
 </div>
 
