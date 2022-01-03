@@ -12,8 +12,8 @@
 				<th>Address</th>
 				<th>Week {week-1} <br/>Snapshot</th>
 				<th>Week {week} <br/> Snapshot</th>
-				<th>Upcoming <br/> Reward</th>
-				<th>Status</th>
+				<th>Week {week-1} <br/> Reward</th>
+				<!-- <th>Status</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -38,7 +38,7 @@
 					</td>
 					<td>
 						{Math.round(account.snapshotLp).toLocaleString()}
-						<span>Tinyman LP Token</span>
+						<span>TM1POOL Tokens</span>
 					</td>
 					<td>
 						{#if account.pendingReward > 0}
@@ -46,10 +46,10 @@
 							<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
 							<span>DPANDA</span>
 						{:else}
-							N/A
+							{account.status}
 						{/if}
 					</td>
-					<td>{account.status}</td>
+					<!-- <td>{account.status}</td> -->
 				</tr>
 			{/each}
 		</tbody>
