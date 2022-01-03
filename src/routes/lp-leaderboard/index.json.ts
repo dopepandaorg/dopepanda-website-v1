@@ -52,8 +52,8 @@ export const get: RequestHandler = async ({}) => {
 	accounts = accounts.map(a => {
 		return {
 			...a,
-			'%': a.isValid ? (a.snapshotLp / sum) : 0,
-			pendingReward: a.isValid ? weeklyReward * (a.snapshotLp / sum) : 0
+			'%': a.isValid ? (a.preSnapshotLp / sum) : 0,
+			pendingReward: a.isValid ? weeklyReward * (a.preSnapshotLp / sum) : 0
 		}
 	})
 
