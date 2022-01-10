@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { faq } from './faq.json'
-    import AccordionItem from '../AccordionItem.svelte'
+    export let faq = []
+    import AccordionItem from './AccordionItem.svelte'
 </script>
 
-<div class="leaderboard__faq">
-    <div class="leaderboard__faq__inner">
+<div class="faq">
+    <div class="faq__inner">
         <div>
             <h3>Frequently Asked Questions</h3>
 
@@ -12,22 +12,19 @@
                 <AccordionItem {...item} isOpen={i === 0} />
             {/each}
         </div>
-
-        <div>
-            <img src="/images/lp-schedule.jpg" alt="schedule"/>
-        </div>
     </div>
 </div>
 
 <style lang="scss">
-	.leaderboard__faq {
+	.faq {
 		margin-top: 4rem;
+        max-width: 1000px;
 
         h3 {
             margin-bottom: 2rem;
         }
 
-        .leaderboard__faq__inner {
+        .faq__inner {
             display: flex;
             flex-direction: column;
 
@@ -38,19 +35,10 @@
             > div {
                 flex: 1;
 
-                &:last-child {
+                &:last-child:not(:first-child) {
                     @media screen and (min-width: 768px) {
                         padding-left: 2rem;
                     }
-                }
-            }
-
-            img {
-                width: 100%;
-                max-width: 600px;
-                
-                @media screen and (min-width: 768px) {
-                    float: right;
                 }
             }
         }

@@ -5,7 +5,7 @@ import { fix_and_outro_and_destroy_block } from "svelte/internal";
 <footer class="section section--footer">
     <div class="section__inner">
         <div class="mascot"><img src="/mascot.png" alt="DopePanda Mascot"></div>
-        <div class="copyright-text">© DopePanda 2021, All Rights Reservered</div>
+        <div class="copyright-text">© DopePanda 2021, All Rights Reserved</div>
     </div>
 </footer>
 
