@@ -89,6 +89,10 @@ import Spinner from '../Spinner.svelte'
                                 <div class="check-claim__action__status pending">
                                     <img src="/icons/pending.svg" alt="Pending"/>
                                     Transaction Pending
+                                    {#if walletResponse.totalSent > 0}
+                                        <br>
+                                        ({Math.ceil(walletResponse.totalExcess - walletResponse.totalSent).toLocaleString()} / {Math.ceil(walletResponse.totalExcess).toLocaleString()})
+                                    {/if}
                                 </div>
                             {/if}
                         </div>
