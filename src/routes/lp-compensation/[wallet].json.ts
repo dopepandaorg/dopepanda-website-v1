@@ -2,7 +2,7 @@ import type { RequestHandler } from "@sveltejs/kit"
 import { withdrawals } from './lpCompensation.json'
 
 const WALLET = 'NRHXRWFE5RXCI5WXDBV4TH4RNH6BGLX5N2BE4OZXOIBQDPJR5JFYRYPMB4'
-const WALLET_TXS_API = `https://algoindexer.algoexplorerapi.io/v2/accounts/${WALLET}/transactions?tx-type=axfer&asset-id=391379500&min-round=18531930`
+const WALLET_TXS_API = `https://algoindexer.algoexplorerapi.io/v2/accounts/${WALLET}/transactions?asset-id=391379500`
 const LP_PRICE = 0.00013
 const MULTIPLIER = 1000 * 1000
 const COMPENSATION_CHECK = (price: number, asset2: number, asset1: number) => (price < LP_PRICE ? ((asset2 - (asset1 / LP_PRICE)) / 2) : 0)

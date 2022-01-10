@@ -353,7 +353,7 @@ import Spinner from '../Spinner.svelte'
                 }
 
                 &.success {
-                    color: #4AC16B;
+                    color: #00A99D;
                 }
 
                 img {
