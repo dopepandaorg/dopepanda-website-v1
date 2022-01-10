@@ -1,0 +1,24 @@
+{
+    "faq": [
+        {
+            "title": "What is LP compensation program?",
+            "content": "LP compensation program seeks to make up the difference in impermanent loss incurred by DopePanda's LP Holders. Some LP holders that have removed their LP after DopePanda reduced the Official LP by 75%, may have been affected by impermanent loss, giving them more DPANDA compared to ALGO.<br/><br/>Our compensation program will EXCHANGE the amount of lost ALGO in return for the excess DPANDA. <br/><br/>We have pre-calculated the difference and set up compensation at the price we reduced the official LP (0.00013 ALGO)."
+        },
+        {
+            "title": "Why is DopePanda running a compensation program?",
+            "content": "On Jan 1/2 Tinyman LP Pools were at the risk of being exploited, and DopePanda had encouraged all LP holders to immediately withdraw their holdings.<br/><br/>To safeguard the LP, we reduced our Official LP on Jan 2 by 75%. By reducing our Official LP, the amount of Liquidity dropped substantially and caused an unfavorable trade for LP Holders who removed their LP during a high price fluctuation."
+        },
+        {
+            "title": "How is the price set at 1 DPANDA = 0.00013 ALGO?",
+            "content": "We reduced our LP at <a href='https://algoexplorer.io/tx/group/r%2FM7s2Pt0kBRFrZKlnT3o2xscYymX0%2BcOSPD0NzAkQ8%3D'>1DPANDA = 0.00013 ALGO</a>. We are using that as a base price for the compensation program."
+        },
+        {
+            "title": "Why am I ineligible?",
+            "content": "If you have withdrawn your LP at a price of 1 DPANDA = 0.00013 ALGO or more, you'll be ineligible for the compensation program."
+        },
+        {
+            "title": "I think I should be eligible",
+            "content": "Please make sure you're using the same address you held DPANDA - ALGO LP. If you are still not able to see your address, Please get in touch with us. <br/><br/>If you find any irregularities in our data. Feel free to get in touch with us."
+        }
+    ]
+}
