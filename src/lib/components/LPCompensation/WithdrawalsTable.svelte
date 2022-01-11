@@ -101,17 +101,6 @@
                 text-decoration: none;
                 border-bottom: 1px solid #fff;
             }
-
-			span {
-				display: block;
-				font-size: 0.625rem;
-				padding-top: 0.25rem;
-				opacity: 0.5;
-
-				@media screen and (min-width: 768px) {
-					font-size: 0.75rem;
-				}
-			}
 		}
 
 		img.token-image {

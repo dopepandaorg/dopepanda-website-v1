@@ -30,7 +30,7 @@
                 <small>Done</small>
                 Website Launch
             </div>
-            <div class="roadmap__item in-progress">
+            <div class="roadmap__item completed">
                 <small>Community</small>
                 LP Contest
             </div>
@@ -47,15 +47,11 @@
     <div class="roadmap__category">
         <div class="roadmap__category__title">Q1 2022</div>
         <div class="roadmap__items">
-            <div class="roadmap__item">
-                <small>Community</small>
-                Airdrop Final
-            </div>
-            <div class="roadmap__item">
+            <div class="roadmap__item in-progress">
                 <small>Community</small>
                 Voting & Participation
             </div>
-            <div class="roadmap__item">
+            <div class="roadmap__item in-progress">
                 <small>Product</small>
                 Whitepaper
             </div>
@@ -70,6 +66,10 @@
             <div class="roadmap__item">
                 <small>NFT Marketplace</small>
                 Marketplace Launch
+            </div>
+            <div class="roadmap__item">
+                <small>Community</small>
+                Airdrop Final
             </div>
         </div>
     </div>

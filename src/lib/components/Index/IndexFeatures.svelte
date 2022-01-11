@@ -41,14 +41,6 @@
 <style lang="scss">
     .section__content {
         text-align: center;
-        
-        p {
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 900px;
-
-            margin-top: 2rem;
-        }
     }
 
     .section__inner {
