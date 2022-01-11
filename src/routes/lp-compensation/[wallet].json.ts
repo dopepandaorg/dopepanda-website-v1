@@ -24,6 +24,10 @@ export const get: RequestHandler = async ({ params }) => {
             if (t.sender === WALLET && t['tx-type'] === 'pay' && t['payment-transaction'] && t['payment-transaction'].receiver === wallet) {
                 paidTxsTotal += t['payment-transaction'].amount / MULTIPLIER
             }
+
+            if (t.sender === WALLET && t['tx-type'] === 'axfer' && t['asset-transfer-transaction'] && t['asset-transfer-transaction'].receiver === wallet) {
+                foundTxsTotal -= t['asset-transfer-transaction'].amount / MULTIPLIER
+            }
         })
     }
     
