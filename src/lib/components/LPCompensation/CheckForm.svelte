@@ -105,7 +105,7 @@ import Spinner from '../Spinner.svelte'
                             <div class="check-claim__action__title">Receive Algo</div>
                             <div class="check-claim__action__value">
                                 <img class="token-image algo" src="/icons/algo-dark.svg" alt="Algo"/>
-                                <span>{walletResponse.totalCompensation.toLocaleString()}</span>
+                                <span>{(Math.ceil(walletResponse.totalCompensation * 100) / 100).toLocaleString()}</span>
                             </div>
 
                             {#if walletResponse.totalPaid >= walletResponse.totalCompensation}
