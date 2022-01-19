@@ -31,15 +31,15 @@
                 Website Launch
             </div>
             <div class="roadmap__item completed">
-                <small>Community</small>
+                <small>Done</small>
                 LP Contest
             </div>
             <div class="roadmap__item completed">
                 <small>Done</small>
                 Holiday NFTs
             </div>
-            <div class="roadmap__item in-progress">
-                <small>Community</small>
+            <div class="roadmap__item completed">
+                <small>Done</small>
                 Algo Verification
             </div>
         </div>
@@ -55,7 +55,7 @@
                 <small>Product</small>
                 Whitepaper
             </div>
-            <div class="roadmap__item">
+            <div class="roadmap__item in-progress">
                 <small>NFT Marketplace</small>
                 Content Tokenization (ASA)
             </div>
