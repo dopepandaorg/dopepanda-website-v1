@@ -1,8 +1,8 @@
 import type { RequestHandler } from "@sveltejs/kit"
 import { ignoredAccounts, weeklyReward, lpCutoff, snapshots } from './lpSnapshot.json'
 
-const LP_HOLDER_API = `https://indexer.algoexplorerapi.io/stats/v2/accounts/rich-list?limit=100&asset-id=391387065`
-const LP_POOL_API = `https://mainnet.analytics.tinyman.org/api/v1/pools/W5FCB4QMIMJBGACPQXCTCT265FPYH2ZXQGVHPKCPHOH7NCXQHIXSHTN4SE`
+const LP_HOLDER_API = `https://indexer.algoexplorerapi.io/stats/v2/accounts/rich-list?limit=100&asset-id=552661375`
+const LP_POOL_API = `https://mainnet.analytics.tinyman.org/api/v1/pools/PMSLU3PDSQ4RTD7PB3MYXWNQL6INRLBYMNX7JTUWT2QXFKAI66DQQDRNVQ`
 
 export const get: RequestHandler = async ({}) => {
 	const lpHoldersRequest = await fetch(LP_HOLDER_API)
@@ -20,28 +20,25 @@ export const get: RequestHandler = async ({}) => {
 	
 	let accounts = lpHoldersResponse.accounts.filter(a => ignoredAccounts.indexOf(a.address) === -1)
 	const latestSnapshot = snapshots[snapshots.length - 1]
-	const preLatestSnapshot = snapshots[snapshots.length - 2]
 	const latestWeek = snapshots.length
 
 	let sum: number = 0
 	accounts = accounts.map(a => {
 		const balance = (Math.round((parseInt(a.balance) / (1000 * 1000) + Number.EPSILON) * 100) / 100)
-		const preSnapshotLp = preLatestSnapshot.find(plpa => plpa.address === a.address)?.lp || 0
-		const snapshotLp = latestSnapshot.find(lpa => lpa.address === a.address)?.lp || 0
-		const isValid = preSnapshotLp > lpCutoff && snapshotLp >= preSnapshotLp 
+		const snapshotLp = latestSnapshot.find(lpa => lpa.address === a.address)?.lp || balance
+		const isValid = snapshotLp > lpCutoff && snapshotLp >= balance 
 		let status = isValid ? 'Eligible' : 'Not Eligible'
 		
 		if (isValid) {
-			sum += preSnapshotLp
+			sum += snapshotLp
 		}
 
-		if (preSnapshotLp === 0 && snapshotLp > lpCutoff && snapshotLp > preSnapshotLp) status = 'New'
+		if (snapshotLp === 0 && balance > lpCutoff) status = 'New'
 		else if (balance < lpCutoff && balance > 0) status = 'Not Eligible'
 
 		return {
 			...a,
 			snapshotLp,
-			preSnapshotLp,
 			balance,
 			isValid,
 			status
@@ -52,18 +49,18 @@ export const get: RequestHandler = async ({}) => {
 	accounts = accounts.map(a => {
 		return {
 			...a,
-			'%': a.isValid ? (a.preSnapshotLp / sum) : 0,
-			pendingReward: a.isValid ? weeklyReward * (a.preSnapshotLp / sum) : 0
+			'%': a.isValid ? (a.snapshotLp / sum) : 0,
+			pendingReward: a.isValid ? weeklyReward * (a.snapshotLp / sum) : 0
 		}
 	})
 
-	accounts.sort((a, b) => b.preSnapshotLp - a.preSnapshotLp)
+	accounts.sort((a, b) => b.snapshotLp - a.snapshotLp)
 
 	return { body: {
 		week: latestWeek,
 		accounts, 
 		sum,
-		totalLP: Math.round(sum), 
+		totalLP: Math.round(sum * dpandaFactor), 
 		totalReward: 2000000,
 		dpandaFactor, 
 		algoFactor } }

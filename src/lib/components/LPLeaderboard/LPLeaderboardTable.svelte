@@ -10,10 +10,10 @@
 			<tr>
 				<th>Rank</th>
 				<th>Address</th>
-				<th>Week {week-1} <br/>Snapshot</th>
-				<th>Week {week} <br/> Snapshot</th>
-				<th>Week {week-1} <br/> Reward</th>
-				<!-- <th>Status</th> -->
+				<th>Live Stake</th>
+				<th>Week {week - 1} <br/>Snapshot</th>
+				<th>Upcoming <br/> Reward</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,15 +30,16 @@
 						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
 					</td>
 					<td>
-						{Math.round(account.preSnapshotLp).toLocaleString()}
+						{Math.round(account.balance * dpandaFactor).toLocaleString()}
+						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
 
 						{#if account['%'] > 0}
 							<span>{(account['%'] * 100).toFixed(2)}%</span>
 						{/if}
 					</td>
 					<td>
-						{Math.round(account.snapshotLp).toLocaleString()}
-						<span>TM1POOL Tokens</span>
+						Pending
+						<span>2022-01-25 16:00 UTC</span>
 					</td>
 					<td>
 						{#if account.pendingReward > 0}
@@ -49,7 +50,7 @@
 							{account.status}
 						{/if}
 					</td>
-					<!-- <td>{account.status}</td> -->
+					<td>{account.status}</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -63,7 +64,7 @@
 		border-collapse: collapse;
 		border-radius: 10px;
 		overflow: hidden;
-		background: linear-gradient(109.08deg, #FD9D5D 0%, #FD2CA0 29.53%, #3397FF 104.51%);
+		background: linear-gradient(109.08deg, rgba(253, 157, 93, 0.25) 0%, rgba(253, 44, 160, 0.25) 49.53%, rgba(51, 151, 255, 0.25) 104.51%), #555555;
 
 		tbody tr:first-child {
 			td {
