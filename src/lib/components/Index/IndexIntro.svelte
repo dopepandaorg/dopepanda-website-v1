@@ -119,18 +119,15 @@
         }
 
         h2 {
-            font-size: 1.625rem;
             line-height: 1;
-
-            @media screen and (min-width: 768px) {
-                font-size: 2rem;
+            
+            @media screen and (max-width: 767px) {
+                font-size: 1.625rem;
             }
         }
 
         p {
-            font-size: 1rem;
-
-            @media screen and (min-width: 768px) {
+            @media screen and (max-width: 767px) {
                 font-size: 1rem;
             }
         }
