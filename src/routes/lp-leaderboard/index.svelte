@@ -56,29 +56,6 @@
 		}
 	}
 
-	// .warning {
-	// 	font-size: 1.125rem;
-	// 	margin-bottom: 2rem;
-	// 	color: #fff;
-	// 	padding: 1.5rem 1.75rem;
-	// 	border-radius: 4px;
-	// 	line-height: 1.5;
-	// 	background: linear-gradient(180deg, #FF4343 0%, #FF4343 100%);
-
-	// 	img {
-	// 		display: block;
-	// 		margin-bottom: 1rem;
-	// 		width: 3rem;
-	// 		height: 3rem;
-	// 	}
-
-	// 	@media screen and (min-width: 767px) {
-	// 		font-size: 1.25rem;
-	// 		margin-bottom: 4rem;
-	// 		padding: 1.5rem 2.25rem;
-	// 	}
-	// }
-
 	.leaderboard__countdown__wrap {
 		display: flex;
 		flex-direction: column;

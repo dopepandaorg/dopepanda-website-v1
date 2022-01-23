@@ -119,7 +119,20 @@
         }
 
         h2 {
+            font-size: 1.625rem;
             line-height: 1;
+
+            @media screen and (min-width: 768px) {
+                font-size: 2rem;
+            }
+        }
+
+        p {
+            font-size: 1rem;
+
+            @media screen and (min-width: 768px) {
+                font-size: 1rem;
+            }
         }
     }
 
@@ -165,6 +178,12 @@
                 height: 3rem;
                 right: -1.25rem;
                 top: -1.25rem;
+            }
+
+            @media screen and (max-width: 767px) {
+                &:last-child {
+                    display: none;
+                }
             }
         }
     }
