@@ -26,7 +26,7 @@ export const get: RequestHandler = async ({}) => {
 	accounts = accounts.map(a => {
 		const balance = (Math.round((parseInt(a.balance) / (1000 * 1000) + Number.EPSILON) * 100) / 100)
 		const snapshotLp = latestSnapshot.find(lpa => lpa.address === a.address)?.lp || balance
-		const isValid = snapshotLp > lpCutoff && snapshotLp >= balance 
+		const isValid = snapshotLp > lpCutoff && balance >= snapshotLp 
 		let status = isValid ? 'Eligible' : 'Not Eligible'
 		
 		if (isValid) {

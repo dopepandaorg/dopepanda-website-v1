@@ -77,7 +77,7 @@
 		thead tr, tbody tr {
 			@media screen and (max-width: 767px) {
 				th:nth-child(1), td:nth-child(1),
-				th:nth-child(4), td:nth-child(4),
+				th:nth-child(3), td:nth-child(3),
 				th:nth-child(6), td:nth-child(6) {
 					display: none;
 				}
