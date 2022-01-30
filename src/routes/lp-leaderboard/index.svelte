@@ -35,7 +35,7 @@
 <PageHeader title="Liquidity Provider's <br/>Compensation Program" backLink="/">
 	<div class="leaderboard__countdown__wrap">
 		<div>
-			<strong>Week {week - 1} / 6 </strong> reward distribution on 16:00 UTC, 2022-01-30
+			<strong>Week {week - 1} / 6 </strong> reward distribution on 16:00 UTC, 2022-02-06
 		</div>
 		<Countdown/>
 	</div>
