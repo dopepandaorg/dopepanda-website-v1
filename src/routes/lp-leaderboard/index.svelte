@@ -32,7 +32,7 @@
 	<title>Liquidity Provider's Leaderboard | DopePanda</title>
 </svelte:head>
 
-<PageHeader title="Liquidity Provider's <br/>Compensation Program" backLink="/">
+<PageHeader title="Liquidity Provider's <br/>Leaderboard" backLink="/">
 	<div class="leaderboard__countdown__wrap">
 		<div>
 			<strong>Week {week - 1} / 6 </strong> reward distribution on 16:00 UTC, 2022-02-06
