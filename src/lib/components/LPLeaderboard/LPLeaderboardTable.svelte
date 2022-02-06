@@ -40,7 +40,7 @@
 					<td>
 						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-						<span>2022-01-30 16:00 UTC</span>
+						<span>2022-02-06 16:00 UTC</span>
 					</td>
 					<td>
 						{#if account.pendingReward > 0}
