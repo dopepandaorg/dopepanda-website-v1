@@ -51,14 +51,14 @@
 						{:else}
 							{account.status.label}
 							{#if account.status.type === 'INVALID_WITHDRAW'}
-								<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premuture Withdrawal</a></span>
+								<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premature Withdrawal</a></span>
 							{/if}
 						{/if}
 					</td>
 					<td>
 						{account.status.label}
 						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
-							<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premuture Withdrawal</a></span>
+							<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premature Withdrawal</a></span>
 						{/if}
 					</td>
 				</tr>
