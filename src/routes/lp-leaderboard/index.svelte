@@ -42,7 +42,7 @@
 </PageHeader>
 
 <div class="container">	
-	<LPLeaderboardStats totalLP={totalLP} totalReward={totalReward}/>
+	<LPLeaderboardStats week={week} totalLP={totalLP} totalReward={totalReward}/>
 	
 	<LpLeaderboardTable week={week} accounts={accounts} dpandaFactor={dpandaFactor}/>
 

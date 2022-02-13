@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let week: number
 	export let totalLP: number
 	export let totalReward: number
 </script>
@@ -16,7 +17,7 @@
         </div>
     </div>
     <div class="leaderboard__stat">
-        <div class="leaderboard__stat__label">Total LP</div>
+        <div class="leaderboard__stat__label">Total Eligible LP <br/>(Week {week - 1})</div>
         <div class="leaderboard__stat__value">{totalLP.toLocaleString()} <span>DPANDA</span></div>
     </div>
     <div class="leaderboard__stat">
@@ -49,6 +50,9 @@
 
 		.leaderboard__stat {
 			margin-top: 2rem;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
 
 			&:first-child {
 				margin-top: 0;
