@@ -10,24 +10,30 @@
 			<tr>
 				<th>Rank</th>
 				<th>Address</th>
-				<th>Live Stake</th>
 				<th>Week {week - 1} <br/>Snapshot</th>
+				<th>Live Stake</th>
 				<th>Upcoming <br/> Reward</th>
 				<th>Status</th>
 			</tr>
 		</thead>
 		<tbody>
 			{#each accounts as account, i}
-				<tr>
+				<tr class="{account.rank === 1 ? 'winner' : ''}">
 					<td>
-						{#if i < 3}
-							<img class="rank-image" src="/images/rank-{i + 1}.svg" alt="{"" + i + 1}"/>							
+						{#if (account.rank <= 3 && account.rank > 0)}
+							<img class="rank-image" src="/images/rank-{account.rank}.svg" alt="{"" + account.rank}"/>
+						{:else if (account.rank > 0)}
+							{account.rank}
 						{:else}
-							{i + 1}
+							N/A
 						{/if}
 					</td>
 					<td>
 						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
+					</td>
+					<td>
+						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
+						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
 					</td>
 					<td>
 						{Math.round(account.balance * dpandaFactor).toLocaleString()}
@@ -38,20 +44,23 @@
 						{/if}
 					</td>
 					<td>
-						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
-						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-						<span>2022-02-06 16:00 UTC</span>
-					</td>
-					<td>
 						{#if account.pendingReward > 0}
 							{Math.round(account.pendingReward).toLocaleString()}
 							<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
 							<span>DPANDA</span>
 						{:else}
-							{account.status}
+							{account.status.label}
+							{#if account.status.type === 'INVALID_WITHDRAW'}
+								<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premuture Withdrawal</a></span>
+							{/if}
 						{/if}
 					</td>
-					<td>{account.status}</td>
+					<td>
+						{account.status.label}
+						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
+							<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premuture Withdrawal</a></span>
+						{/if}
+					</td>
 				</tr>
 			{/each}
 		</tbody>
@@ -67,7 +76,7 @@
 		overflow: hidden;
 		background: linear-gradient(109.08deg, rgba(253, 157, 93, 0.25) 0%, rgba(253, 44, 160, 0.25) 49.53%, rgba(51, 151, 255, 0.25) 104.51%), #555555;
 
-		tbody tr:first-child {
+		tbody tr.winner {
 			td {
 				font-weight: bold;
 				background-color: transparent;
@@ -77,7 +86,7 @@
 		thead tr, tbody tr {
 			@media screen and (max-width: 767px) {
 				th:nth-child(1), td:nth-child(1),
-				th:nth-child(3), td:nth-child(3),
+				th:nth-child(4), td:nth-child(4),
 				th:nth-child(6), td:nth-child(6) {
 					display: none;
 				}
@@ -125,6 +134,10 @@
 
 				@media screen and (min-width: 767px) {
 					font-size: 0.75rem;
+				}
+
+				a {
+					color: #fff;
 				}
 
 				// &.tag {
