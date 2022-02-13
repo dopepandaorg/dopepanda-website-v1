@@ -24,7 +24,7 @@
                 </a>
             </div>
             <div class="section__community__item">
-                <a href="https://discord.gg/UZNp668XYU" target="_blank" rel="nofollow">
+                <a href="https://discord.gg/KMsyYaQC" target="_blank" rel="nofollow">
                     <div><img src="/icons/discord.svg" alt="Discord"></div>
                     <div>
                         <h4>Discord</h4>
