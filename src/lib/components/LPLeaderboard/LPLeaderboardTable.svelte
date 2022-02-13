@@ -34,6 +34,7 @@
 					<td>
 						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
+						<span>2022-02-13 16:00 UTC</span>
 					</td>
 					<td>
 						{Math.round(account.balance * dpandaFactor).toLocaleString()}
