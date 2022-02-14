@@ -85,10 +85,10 @@
 		<tbody>
 			{#each newAccounts as account, i}
 				<tr>
-					<td width="33.33333%">
+					<td width="40%">
 						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
 					</td>
-					<td width="33.33333%">
+					<td width="20%">
 						{Math.round(account.balance * dpandaFactor).toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
 
@@ -96,7 +96,7 @@
 							<span>{(account['%'] * 100).toFixed(2)}%</span>
 						{/if}
 					</td>
-					<td width="33.33333%">
+					<td width="20%">
 						{account.status.label}
 					</td>
 				</tr>
@@ -119,13 +119,13 @@
 		<tbody>
 			{#each invalidAccounts as account, i}
 				<tr>
-					<td width="33.33333%">
+					<td width="40%">
 						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
 					</td>
-					<td width="33.33333%">
+					<td width="20%">
 						{account.status.label}
 					</td>
-					<td width="33.33333%">
+					<td width="20%">
 						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
 							Premature Withdrawal
 							<span><a target="_blank" rel="nofollow" href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Transaction</a></span>
@@ -158,18 +158,6 @@
 			td {
 				font-weight: bold;
 				background-color: transparent;
-			}
-		}
-
-		&.full {
-			thead tr, tbody tr {
-				@media screen and (max-width: 767px) {
-					th:nth-child(1), td:nth-child(1),
-					th:nth-child(4), td:nth-child(4),
-					th:nth-child(6), td:nth-child(6) {
-						display: none;
-					}
-				}
 			}
 		}
 
@@ -223,28 +211,16 @@
 				a {
 					color: #fff;
 				}
+			}
+		}
 
-				// &.tag {
-				// 	font-size: 0.75rem;
-				// 	display: inline-block;
-				// 	padding: 0.25rem 0.5rem;
-				// 	background-color: #fff;
-				// 	border-radius: 4px;
-				// 	margin-top: 0.25rem;
-				// 	opacity: 1;
-
-				// 	&.eligible {
-				// 		background-color: green;
-				// 	}
-
-				// 	&.not.eligible {
-				// 		background-color: red;
-				// 	}
-
-				// 	&.new {
-				// 		background-color: blue;
-				// 	}
-				// }
+		&.full {
+			th:nth-child(1), td:nth-child(1),
+			th:nth-child(4), td:nth-child(4),
+			th:nth-child(6), td:nth-child(6) {
+				@media screen and (max-width: 767px) {
+					display: none;
+				}
 			}
 		}
 
