@@ -22,6 +22,8 @@ export const get: RequestHandler = async ({}) => {
 	const dpandaFactor = dpandaTokens / lpTokensIssued
 	const algoFactor = algoTokens / lpTokensIssued
 	
+	let invalidAccounts = []
+	let newAccounts = []
 	let accounts = lpHoldersResponse.accounts.filter(a => ignoredAccounts.indexOf(a.address) === -1)
 	const latestSnapshot = snapshots[snapshots.length - 1]
 	const latestWeek = snapshots.length
@@ -71,7 +73,11 @@ export const get: RequestHandler = async ({}) => {
 		}
 	})
 
-	accounts = accounts.filter(a => (a.snapshotLp > 0 || a.balance > 0))
+	newAccounts = accounts.filter(a => ((a.snapshotLp === 0 && a.balance > lpCutoff) && !a.isValid))
+	invalidAccounts = accounts.filter(a => a.snapshotLp && !a.isValid)
+	invalidAccounts.sort((a, b) => b.snapshotLp - a.snapshotLp)
+
+	accounts = accounts.filter(a => (a.snapshotLp > 0 || a.balance > 0) && a.isValid)
 	accounts.sort((a, b) => b.snapshotLp - a.snapshotLp)
 
 	let rank = 0
@@ -93,7 +99,8 @@ export const get: RequestHandler = async ({}) => {
 		latestSnapshotDate,
 		nextSnapshotDate,
 		accounts,
-		newAccounts: [],
+		invalidAccounts,
+		newAccounts,
 		sum,
 		totalLP: Math.round(sum * dpandaFactor), 
 		totalReward: 2000000,

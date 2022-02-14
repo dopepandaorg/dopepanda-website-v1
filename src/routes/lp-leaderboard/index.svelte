@@ -22,6 +22,8 @@
 	import LpLeaderboardTable from "$lib/components/LPLeaderboard/LPLeaderboardTable.svelte"
 	
 	export let accounts: any[]
+	export let invalidAccounts: any[]
+	export let newAccounts: any[]
 	export let week: number
 	export let totalLP: number
 	export let totalReward: number
@@ -44,7 +46,7 @@
 <div class="container">	
 	<LPLeaderboardStats week={week} totalLP={totalLP} totalReward={totalReward}/>
 	
-	<LpLeaderboardTable week={week} accounts={accounts} dpandaFactor={dpandaFactor}/>
+	<LpLeaderboardTable week={week} accounts={accounts} invalidAccounts={invalidAccounts} newAccounts={newAccounts} dpandaFactor={dpandaFactor}/>
 
 	<FAQ faq={faq}/>
 </div>

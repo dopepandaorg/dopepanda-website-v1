@@ -1,11 +1,13 @@
 <script lang="ts">
 	export let accounts: any[]
+	export let invalidAccounts: any[]
+	export let newAccounts: any[]
 	export let week: number
 	export let dpandaFactor: number
 </script>
 
 <div class="leaderboard__table">
-	<table>
+	<table class="full">
 		<thead>
 			<tr>
 				<th>Rank</th>
@@ -68,7 +70,82 @@
 	</table>
 </div>
 
+
+<h3>New Accounts</h3>
+
+<div class="leaderboard__table">
+	<table>
+		<thead>
+			<tr>
+				<th>Address</th>
+				<th>Live Stake</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			{#each newAccounts as account, i}
+				<tr>
+					<td width="33.33333%">
+						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
+					</td>
+					<td width="33.33333%">
+						{Math.round(account.balance * dpandaFactor).toLocaleString()}
+						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
+
+						{#if account['%'] > 0}
+							<span>{(account['%'] * 100).toFixed(2)}%</span>
+						{/if}
+					</td>
+					<td width="33.33333%">
+						{account.status.label}
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</div>
+
+<h3>Ineligible Accounts</h3>
+
+<div class="leaderboard__table">
+	<table>
+		<thead>
+			<tr>
+				<th>Address</th>
+				<th>Status</th>
+				<th>Reason</th>
+			</tr>
+		</thead>
+		<tbody>
+			{#each invalidAccounts as account, i}
+				<tr>
+					<td width="33.33333%">
+						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
+					</td>
+					<td width="33.33333%">
+						{account.status.label}
+					</td>
+					<td width="33.33333%">
+						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
+							Premature Withdrawal
+							<span><a target="_blank" rel="nofollow" href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Transaction</a></span>
+						{/if}
+
+						{#if account.status.type === 'INVALID'}
+							Insufficient Amount
+						{/if}
+					</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
+</div>
+
 <style lang="scss">
+	h3 {
+		margin: 4rem 0 1.5rem;
+	}
+
     table {
 		width: 100%;
 		text-align: center;
@@ -84,14 +161,20 @@
 			}
 		}
 
+		&.full {
+			thead tr, tbody tr {
+				@media screen and (max-width: 767px) {
+					th:nth-child(1), td:nth-child(1),
+					th:nth-child(4), td:nth-child(4),
+					th:nth-child(6), td:nth-child(6) {
+						display: none;
+					}
+				}
+			}
+		}
+
 		thead tr, tbody tr {
 			@media screen and (max-width: 767px) {
-				th:nth-child(1), td:nth-child(1),
-				th:nth-child(4), td:nth-child(4),
-				th:nth-child(6), td:nth-child(6) {
-					display: none;
-				}
-
 				td:nth-child(2) {
 					font-size: 0.625rem;
 					padding-left: 0.5rem;

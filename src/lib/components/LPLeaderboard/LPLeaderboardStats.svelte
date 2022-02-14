@@ -25,7 +25,7 @@
         <div class="leaderboard__stat__value">{totalReward.toLocaleString()} <span>DPANDA</span></div>
     </div>
     <div class="leaderboard__stat">
-        <div class="leaderboard__stat__label">Return-on-LP</div>
+        <div class="leaderboard__stat__label">Return-on-DPANDA</div>
         <div class="leaderboard__stat__value">{Math.round(((totalReward / totalLP) / 7 * 365) * 100).toLocaleString()}% <span>(APY)</span></div>
     </div>
 </div>
