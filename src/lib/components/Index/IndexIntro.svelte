@@ -4,9 +4,6 @@
     const navigateRoadmap = () => {
         document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' })
     }
-    const navigateCommunity = () => {
-        document.getElementById('community').scrollIntoView({ behavior: 'smooth' })
-    }
     const navigateNFT = () => {
         document.getElementById('nft').scrollIntoView({ behavior: 'smooth' })
     }
@@ -31,9 +28,9 @@
                 <p>DopePanda aims to bridge DeFi and Crowdfunding with the Creator Economy. Leveraging the power of <strong>Algorand's ASA</strong> and our <strong>unique approach to subscriptions</strong>; creators can seamlessly share, monetize content and engage with their audience.</p>
             </div>
             <div class="section__cta">
-                <button on:click={navigateLeaderboard}>LP Leaderboard <img src="/images/badge-new.svg" alt="New"></button>
+                <a href="https://docsend.com/view/w8bivjdueavgce9h" target="_blank"><button>Whitepaper<img src="/images/badge-new.svg" alt="New"></button></a>
+                <button on:click={navigateLeaderboard}>LP Leaderboard</button>
                 <button on:click={navigateRoadmap}>View our Roadmap</button>
-                <button on:click={navigateCommunity}>Join our Community</button>
             </div>
         </div>
     </div>
@@ -144,6 +141,22 @@
             gap: 1vw;
         }
 
+        > a, > button {
+            flex: 1;
+            display: flex;
+
+            @media screen and (max-width: 767px) {
+                &:last-child {
+                    display: none;
+                }
+            }
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         button {
             position: relative;
             margin-top: 1rem;
@@ -157,6 +170,7 @@
             background-size: 200% 100%;
             background-position: 200% 100%;
             transition: all 0.3s ease-in-out;
+            justify-content: center;
 
             @media screen and (min-width: 768px) {
                 font-size: 1.25rem;
@@ -175,12 +189,6 @@
                 height: 3rem;
                 right: -1.25rem;
                 top: -1.25rem;
-            }
-
-            @media screen and (max-width: 767px) {
-                &:last-child {
-                    display: none;
-                }
             }
         }
     }
