@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="leaderboard__stat">
-        <div class="leaderboard__stat__label">Total Eligible LP <br/>(Week {week - 1})</div>
+        <div class="leaderboard__stat__label">Total Eligible LP <br/>(Bonus Week)</div>
         <div class="leaderboard__stat__value">{totalLP.toLocaleString()} <span>DPANDA</span></div>
     </div>
     <div class="leaderboard__stat">

@@ -12,7 +12,7 @@
 			<tr>
 				<th>Rank</th>
 				<th>Address</th>
-				<th>Week {week - 1} <br/>Snapshot</th>
+				<th>Bonus Week <br/>Snapshot</th>
 				<th>Live Stake</th>
 				<th>Upcoming <br/> Reward</th>
 				<th>Status</th>
@@ -36,7 +36,7 @@
 					<td>
 						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-						<span>2022-02-20 16:00 UTC</span>
+						<span>2022-02-27 16:00 UTC</span>
 					</td>
 					<td>
 						{Math.round(account.balance * dpandaFactor).toLocaleString()}
@@ -63,41 +63,6 @@
 						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
 							<span><a href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Premature Withdrawal</a></span>
 						{/if}
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-
-
-<h3>New Accounts</h3>
-
-<div class="leaderboard__table">
-	<table>
-		<thead>
-			<tr>
-				<th>Address</th>
-				<th>Live Stake</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each newAccounts as account, i}
-				<tr>
-					<td width="40%">
-						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
-					</td>
-					<td width="20%">
-						{Math.round(account.balance * dpandaFactor).toLocaleString()}
-						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-
-						{#if account['%'] > 0}
-							<span>{(account['%'] * 100).toFixed(2)}%</span>
-						{/if}
-					</td>
-					<td width="20%">
-						{account.status.label}
 					</td>
 				</tr>
 			{/each}
