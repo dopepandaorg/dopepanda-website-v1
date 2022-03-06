@@ -1,8 +1,5 @@
 <script lang="ts">
 	export let accounts: any[]
-	export let invalidAccounts: any[]
-	export let newAccounts: any[]
-	export let week: number
 	export let dpandaFactor: number
 </script>
 
@@ -45,11 +42,6 @@
 						{#if account['%'] > 0}
 							<span>{(account['%'] * 100).toFixed(2)}%</span>
 						{/if}
-					</td>
-					<td>
-						{Math.round(account.snapshotLp * dpandaFactor).toLocaleString()}
-						<img class="token-image" src="/apple-icon.png" alt="DPANDA"/>
-						<span>2022-02-27 16:00 UTC</span>
 					</td>
 					<td>
 						{#if account.pendingReward > 0}
