@@ -17,11 +17,11 @@
 	);
 
 	const loadYieldlyAPY = () => {
-		fetch('https://app.yieldly.finance/staking/pools/v3/617728717')
+		fetch('https://app.yieldly.finance/staking/pools/v3/617707129')
 			.then((response) => response.json())
 			.then((body) => (apyYieldlyStake = body.apy));
 
-		fetch('https://app.yieldly.finance/staking/pools/v3/617707129')
+		fetch('https://app.yieldly.finance/staking/pools/v3/617728717')
 			.then((response) => response.json())
 			.then((body) => (apyYieldlyLPStake = body.apy));
 	};
