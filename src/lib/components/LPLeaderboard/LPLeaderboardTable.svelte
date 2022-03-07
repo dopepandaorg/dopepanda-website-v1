@@ -1,8 +1,5 @@
 <script lang="ts">
 	export let accounts: any[]
-	export let invalidAccounts: any[]
-	export let newAccounts: any[]
-	export let week: number
 	export let dpandaFactor: number
 </script>
 
@@ -12,9 +9,9 @@
 			<tr>
 				<th>Rank</th>
 				<th>Address</th>
-				<th>Bonus Week <br/>Snapshot</th>
 				<th>Live Stake</th>
-				<th>Upcoming <br/> Reward</th>
+				<th>Bonus Week <br/>Snapshot</th>
+				<th>Bonus Week <br/> Reward</th>
 				<th>Status</th>
 			</tr>
 		</thead>
@@ -70,47 +67,7 @@
 	</table>
 </div>
 
-<h3>Ineligible Accounts</h3>
-
-<div class="leaderboard__table">
-	<table>
-		<thead>
-			<tr>
-				<th>Address</th>
-				<th>Status</th>
-				<th>Reason</th>
-			</tr>
-		</thead>
-		<tbody>
-			{#each invalidAccounts as account, i}
-				<tr>
-					<td width="40%">
-						{account.address.slice(0, 6)} ... {account.address.slice(-6, account.address.length)}
-					</td>
-					<td width="20%">
-						{account.status.label}
-					</td>
-					<td width="20%">
-						{#if account.status.type === 'INVALID_WITHDRAW' && account.status.data && account.status.data.t}
-							Premature Withdrawal
-							<span><a target="_blank" rel="nofollow" href="https://algoexplorer.io/tx/group/{encodeURIComponent(account.status.data.t.group)}">Transaction</a></span>
-						{/if}
-
-						{#if account.status.type === 'INVALID'}
-							Insufficient Amount
-						{/if}
-					</td>
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
-
 <style lang="scss">
-	h3 {
-		margin: 4rem 0 1.5rem;
-	}
-
     table {
 		width: 100%;
 		text-align: center;

@@ -17,16 +17,12 @@
 
 	import FAQ from '$lib/components/FAQ.svelte'
 	import PageHeader from '$lib/components/PageHeader.svelte'
-	import Countdown from '$lib/components/Countdown.svelte'
-	import LPLeaderboardStats from '$lib/components/LPLeaderboard/LPLeaderboardStats.svelte'
 	import LpLeaderboardTable from "$lib/components/LPLeaderboard/LPLeaderboardTable.svelte"
 	
 	export let accounts: any[]
 	export let invalidAccounts: any[]
 	export let newAccounts: any[]
 	export let week: number
-	export let totalLP: number
-	export let totalReward: number
 	export let dpandaFactor: number
 </script>
 
@@ -37,9 +33,8 @@
 <PageHeader title="Liquidity Provider's <br/>Leaderboard" backLink="/">
 	<div class="leaderboard__countdown__wrap">
 		<div>
-			<strong>Bonus Week!</strong> final reward distribution on 16:00 UTC, 2022-03-06
+			<strong>Completed!</strong> final reward distribution on 16:00 UTC, 2022-03-06
 		</div>
-		<Countdown/>
 	</div>
 </PageHeader>
 
@@ -54,13 +49,10 @@
 		<br/><br/>
 		In light of this and our commitment to rewarding LP holders, we have decided to move away from the weekly contest and make our LP rewards permanent!
 		<br/><br/>
-		In the first week of March 2022, DPANDA / ALGO LP pool staking will be available on AlgoStake.
+		All ALGO/DPANDA LP token holders are now able to stake their tokens on <a href="https://app.algostake.org" target="_blank" rel="nofollow">AlgoStake</a>!
 		<br/><br/>
-		As a thank you to our community, we are running a final (bonus) week of LP Leaderboard rewards. Lock your LP by 27th Feb 4pm UTC!  
+		As a thank you to our community, we have conducted a bonus week of our LP Leaderboard program with the final rewards distributed on the 6th of March 2022.
 	</div>
-
-
-	<LPLeaderboardStats week={week} totalLP={totalLP} totalReward={totalReward}/>
 	
 	<LpLeaderboardTable week={week} accounts={accounts} invalidAccounts={invalidAccounts} newAccounts={newAccounts} dpandaFactor={dpandaFactor}/>
 
@@ -91,6 +83,10 @@
 				margin-right: 1rem;
 				margin-bottom: 0;
 			}
+		}
+
+		a {
+			color: #fff;
 		}
 
 		img {

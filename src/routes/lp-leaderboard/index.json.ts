@@ -3,7 +3,7 @@ import { ignoredAccounts, weeklyReward, lpCutoff, snapshots, latestSnapshotDate,
 
 const LP_HOLDER_API = `https://indexer.algoexplorerapi.io/stats/v2/accounts/rich-list?limit=100&asset-id=552661375`
 const LP_POOL_API = `https://mainnet.analytics.tinyman.org/api/v1/pools/PMSLU3PDSQ4RTD7PB3MYXWNQL6INRLBYMNX7JTUWT2QXFKAI66DQQDRNVQ`
-const LP_VALIDATE_API = (time: string) => `https://algoindexer.algoexplorerapi.io/v2/accounts/PMSLU3PDSQ4RTD7PB3MYXWNQL6INRLBYMNX7JTUWT2QXFKAI66DQQDRNVQ/transactions?tx-type=axfer&after-time=${time}&asset-id=552661375&limit=5000`
+const LP_VALIDATE_API = (time: string, endTime: string) => `https://algoindexer.algoexplorerapi.io/v2/accounts/PMSLU3PDSQ4RTD7PB3MYXWNQL6INRLBYMNX7JTUWT2QXFKAI66DQQDRNVQ/transactions?tx-type=axfer&after-time=${time}&before-time=${endTime}&asset-id=552661375&limit=5000`
 
 export const get: RequestHandler = async ({}) => {
 	const lpHoldersRequest = await fetch(LP_HOLDER_API)
@@ -12,7 +12,7 @@ export const get: RequestHandler = async ({}) => {
 	const lpPoolRequest = await fetch(LP_POOL_API)
 	const lpPoolResponse = await lpPoolRequest.json()
 	
-	const lpValidateAPIs = await fetch(LP_VALIDATE_API(new Date(latestSnapshotDate).toISOString()))
+	const lpValidateAPIs = await fetch(LP_VALIDATE_API(new Date(latestSnapshotDate).toISOString(), new Date(nextSnapshotDate).toISOString()))
 	const lpValidateReponse = await lpValidateAPIs.json()
 
 	const lpTokensIssued = lpPoolResponse.current_issued_liquidity_assets
