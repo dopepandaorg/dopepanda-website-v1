@@ -1,5 +1,5 @@
 <script lang="ts">
-	import NftTile from "../NFTTile.svelte"
+	import NftTile from '../NFTTile.svelte';
 </script>
 
 <section id="nft" class="section section--vertical section--nft">
@@ -15,9 +15,11 @@
 						isExclusive={true}
 						managerId="F5RPRLSFSQLSWYBZPSRSDJA7XN4U6BJYUWCYI6CRL33S3X3H4JMSAFHDJA"
 						description="Look who's the luckiest panda of them all.<br><br><small><em>Lucky Panda NFT holder will gain exclusive access to the Dopeverse in Mid 2022.</em></small>"
-						name="Lucky Panda" image="/images/nft-lucky-panda.png"
+						name="Lucky Panda"
+						image="/images/nft-lucky-panda.png"
 						classes="christmas"
-						price={100} total={1}
+						price={100}
+						total={1}
 					/>
 				</div>
 			</div>
@@ -25,36 +27,41 @@
 			<NftTile
 				managerId="EN7THKWURGFFIGL4VGJGBROU7T3MVDKON3FPAZGT5S3U6BNKBLPSBSAFKA"
 				description="Leave dope brownies and a glass of milk for Santa Panda."
-				name="Santa Panda" image="/images/nft-santa-panda.png"
+				name="Santa Panda"
+				image="/images/nft-santa-panda.png"
 				classes="christmas"
-				price={10} total={10}
+				price={10}
+				total={10}
 			/>
-
 
 			<NftTile
 				managerId="DXUAV3FBWB4C2ZKQN356QMCP3LPBUSWJE65LG7OW55BDJ5BP2EDG4CCPL4"
 				description="He loves Skiing! He's the best skier in all of North Pole."
-				name="Skiing Panda" image="/images/nft-skiing-panda.png"
+				name="Skiing Panda"
+				image="/images/nft-skiing-panda.png"
 				classes="christmas"
-				price={30} total={5}
+				price={30}
+				total={5}
 			/>
-
 
 			<NftTile
 				managerId="KHATIUHAFHPSW4CL5ZK4TQ5LMFNYEEX46MLBTTHBYYFOLNTTSIQSJVWC54"
 				description="Stuck in a wreath, he wishes you an eternity of happiness."
-				name="Eternal Panda" image="/images/nft-eternal-panda.png"
+				name="Eternal Panda"
+				image="/images/nft-eternal-panda.png"
 				classes="christmas"
-				price={30} total={5}
+				price={30}
+				total={5}
 			/>
-
 
 			<NftTile
 				managerId="7QCF3WMDFIG3LUP4YOBYO6G4HVRM53FU6SERKBCP6RGAJBYKT3FFWAHMBY"
 				description="Wishing you Happy Holidays from your favorite panda!"
-				name="Greeting Panda" image="/images/nft-greeting-panda.png"
+				name="Greeting Panda"
+				image="/images/nft-greeting-panda.png"
 				classes="christmas"
-				price={10} total={10}
+				price={10}
+				total={10}
 			/>
 		</div>
 
@@ -62,8 +69,10 @@
 			<NftTile
 				managerId=""
 				description="Lights up a bamboo blunt to relax after a long day of doing absolutely nothing."
-				name="Smoker Panda" image="/images/nft-smoker-panda.png"
-				price={10} total={1}
+				name="Smoker Panda"
+				image="/images/nft-smoker-panda.png"
+				price={10}
+				total={1}
 			/>
 
 			<NftTile
@@ -74,22 +83,28 @@
 						target="_blank"
 						rel="nofollow">donated to charity</a
 					>.`}
-				name="Kind Panda" image="/images/nft-kind-panda.png"
-				price={10} total={1}
+				name="Kind Panda"
+				image="/images/nft-kind-panda.png"
+				price={10}
+				total={1}
 			/>
-			
+
 			<NftTile
 				managerId=""
 				description="He is satisfied with his life and enjoys every moment."
-				name="Happy Panda" image="/images/nft-happy-panda.png"
-				price={10} total={1}
+				name="Happy Panda"
+				image="/images/nft-happy-panda.png"
+				price={10}
+				total={1}
 			/>
 
 			<NftTile
 				managerId=""
 				description="This is just a 'basic' dope panda. Weighs 45 kilo and eats consistently for 12-14 hours a day"
-				name="Basic Panda" image="/images/nft-basic-panda.png"
-				price={10} total={6}
+				name="Basic Panda"
+				image="/images/nft-basic-panda.png"
+				price={10}
+				total={6}
 			/>
 		</div>
 	</div>
