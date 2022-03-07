@@ -1,7 +1,7 @@
 <script lang="ts">
 	import CopyClipboard from '../CopyClipboard.svelte';
 	import Spinner from '../Spinner.svelte';
-	import WithdrawalsTable from './WithdrawalsTable.svelte';
+	import RewardTrackerTable from './RewardTrackerTable.svelte';
 
 	let wallet: string = '';
 	let isLoading: boolean = false;
@@ -28,7 +28,7 @@
 		<div class="check-form">
 			<div class="title-wrap">
 				<img src="/icons/calculator.svg" alt="Calculate" />
-				<h3>Calculate your compensation</h3>
+				<h3>Track your Reward</h3>
 			</div>
 
 			<fieldset>
@@ -39,11 +39,11 @@
 				</div>
 			</fieldset>
 
-			<div class="check-form__notice">
+			<!-- <div class="check-form__notice">
 				We are compensating LP Holders at a value of 1 DPANDA = 0.00013 ALGO
 				<br />
 				<small>(This is the price at which DPANDA-ALGO Official LP was removed)</small>
-			</div>
+			</div> -->
 		</div>
 
 		{#if isLoading}
@@ -62,7 +62,7 @@
 				</div>
 
 				{#if walletResponse.withdrawals.length > 0}
-					<WithdrawalsTable withdrawals={walletResponse.withdrawals} />
+					<RewardTrackerTable withdrawals={walletResponse.withdrawals} />
 				{/if}
 			</div>
 

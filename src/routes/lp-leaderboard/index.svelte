@@ -1,29 +1,29 @@
 <script context="module" lang="ts">
-	import type { Load } from "@sveltejs/kit"
+	import type { Load } from '@sveltejs/kit';
 
 	export const load: Load = async ({ fetch }) => {
-		return ({
+		return {
 			props: {
-				... await fetch('/lp-leaderboard.json')
-					.then(response => response.json())
-					.then(body => body)
+				...(await fetch('/lp-leaderboard.json')
+					.then((response) => response.json())
+					.then((body) => body))
 			}
-		})
-	}
+		};
+	};
 </script>
 
 <script lang="ts">
-	import { faq } from './faq.json'
+	import { faq } from './faq.json';
 
-	import FAQ from '$lib/components/FAQ.svelte'
-	import PageHeader from '$lib/components/PageHeader.svelte'
-	import LpLeaderboardTable from "$lib/components/LPLeaderboard/LPLeaderboardTable.svelte"
-	
-	export let accounts: any[]
-	export let invalidAccounts: any[]
-	export let newAccounts: any[]
-	export let week: number
-	export let dpandaFactor: number
+	import FAQ from '$lib/components/FAQ.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
+	import LpLeaderboardTable from '$lib/components/LPLeaderboard/LPLeaderboardTable.svelte';
+
+	export let accounts: any[];
+	export let invalidAccounts: any[];
+	export let newAccounts: any[];
+	export let week: number;
+	export let dpandaFactor: number;
 </script>
 
 <svelte:head>
@@ -41,22 +41,26 @@
 <div class="container">
 	<div class="warning">
 		<div>
-			<img src="/icons/info.svg" alt="Alert"/>
+			<img src="/icons/info.svg" alt="Alert" />
 			<strong>Future of LP Leaderboard Contest</strong>
 		</div>
-		<br/>
-		Our LP leaderboard contest, initially a 4 week initiative to reward our community and LP holders, turned out to be a great success.
-		<br/><br/>
-		In light of this and our commitment to rewarding LP holders, we have decided to move away from the weekly contest and make our LP rewards permanent!
-		<br/><br/>
-		All ALGO/DPANDA LP token holders are now able to stake their tokens on <a href="https://app.algostake.org" target="_blank" rel="nofollow">AlgoStake</a>!
-		<br/><br/>
-		As a thank you to our community, we have conducted a bonus week of our LP Leaderboard program with the final rewards distributed on the 6th of March 2022.
+		<br />
+		Our LP leaderboard contest, initially a 4 week initiative to reward our community and LP holders,
+		turned out to be a great success.
+		<br /><br />
+		In light of this and our commitment to rewarding LP holders, we have decided to move away from the
+		weekly contest and make our LP rewards permanent!
+		<br /><br />
+		All ALGO/DPANDA LP token holders are now able to stake their tokens on
+		<a href="https://app.algostake.org" target="_blank" rel="nofollow">AlgoStake</a>!
+		<br /><br />
+		As a thank you to our community, we have conducted a bonus week of our LP Leaderboard program with
+		the final rewards distributed on the 6th of March 2022.
 	</div>
-	
-	<LpLeaderboardTable week={week} accounts={accounts} invalidAccounts={invalidAccounts} newAccounts={newAccounts} dpandaFactor={dpandaFactor}/>
 
-	<FAQ faq={faq}/>
+	<LpLeaderboardTable {week} {accounts} {invalidAccounts} {newAccounts} {dpandaFactor} />
+
+	<FAQ {faq} />
 </div>
 
 <style lang="scss">
@@ -73,12 +77,12 @@
 		padding: 1.5rem 1.75rem;
 		border-radius: 4px;
 		line-height: 1.5;
-		background: #7375E1;
+		background: #7375e1;
 
 		div {
 			display: flex;
 			align-items: center;
-			
+
 			img {
 				margin-right: 1rem;
 				margin-bottom: 0;
@@ -108,7 +112,7 @@
 		flex-direction: column;
 		gap: 1rem;
 		margin-top: 2rem;
-		
+
 		@media screen and (min-width: 767px) {
 			align-items: flex-end;
 			text-align: right;
