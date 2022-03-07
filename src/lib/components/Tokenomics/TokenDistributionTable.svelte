@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ProgressBar from '../ProgressBar.svelte';
 
+	const TOTAL = 1000000000
 	const distribution = [
 		{
 			type: 'Team',
@@ -71,7 +72,7 @@
 					<td>
 						{item.allocated.toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA" />
-						<span>10%</span>
+						<span>{Number((item.allocated / TOTAL) * 100).toFixed(2)}%</span>
 					</td>
 					<td>
 						{item.distributed.toLocaleString()}
