@@ -1,58 +1,8 @@
 <script lang="ts">
 	import ProgressBar from '../ProgressBar.svelte';
 
-	const TOTAL = 1000000000
-	const distribution = [
-		{
-			type: 'Team',
-			allocated: 100000000,
-			distributed: 0,
-			category: 'team',
-			isVesting: true
-		},
-		{
-			type: 'Marketing & Partnership',
-			allocated: 100000000,
-			distributed: 20000000,
-			category: 'spend',
-			isVesting: false
-		},
-		{
-			type: 'Foundation Reserve',
-			allocated: 300000000,
-			distributed: 0,
-			category: 'foundation',
-			isVesting: true
-		},
-		{
-			type: 'Tinyman Liquidity Pool',
-			allocated: 62500000,
-			distributed: 62500000,
-			category: 'community',
-			isVesting: false
-		},
-		{
-			type: 'Initial Airdrops & Giveaways',
-			allocated: 187500000,
-			distributed: 156250000,
-			category: 'community',
-			isVesting: false
-		},
-		{
-			type: 'Liquidity Provider Rewards',
-			allocated: 125000000,
-			distributed: 94000000,
-			category: 'community',
-			isVesting: false
-		},
-		{
-			type: 'Platform Participation Rewards',
-			allocated: 125000000,
-			distributed: 0,
-			category: 'community',
-			isVesting: false
-		}
-	];
+	export let totalSupply;
+	export let distribution;
 </script>
 
 <div class="token-distribution__table">
@@ -72,11 +22,12 @@
 					<td>
 						{item.allocated.toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA" />
-						<span>{Number((item.allocated / TOTAL) * 100).toFixed(2)}%</span>
+						<span>{Number((item.allocated / totalSupply) * 100).toFixed(2)}%</span>
 					</td>
 					<td>
 						{item.distributed.toLocaleString()}
 						<img class="token-image" src="/apple-icon.png" alt="DPANDA" />
+						<span>{Math.round((item.distributed / item.allocated) * 100)}% distributed</span>
 					</td>
 					{#if item.isVesting}
 						<td>
@@ -88,7 +39,11 @@
 					{:else}
 						<td>
 							<ProgressBar progress={(item.distributed / item.allocated) * 100} />
-							<span>{Math.round((item.distributed / item.allocated) * 100)}% distributed</span>
+							{#if item.allocated - item.distributed > 0}
+								<span>{Number(item.allocated - item.distributed).toLocaleString()} remaining</span>
+							{:else}
+								<span>100% distributed</span>
+							{/if}
 						</td>
 					{/if}
 				</tr>

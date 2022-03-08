@@ -227,10 +227,6 @@
 			@media screen and (min-width: 768px) {
 				font-size: 1rem;
 				padding: 1.5rem 1rem;
-
-				br {
-					display: none;
-				}
 			}
 
 			a {
@@ -279,15 +275,6 @@
 			@media screen and (max-width: 767px) {
 				width: 0.875rem;
 				height: 0.875rem;
-			}
-
-			&.algo {
-				width: 0.875rem;
-				height: 0.875rem;
-
-				@media screen and (max-width: 767px) {
-					padding: 2%;
-				}
 			}
 		}
 
