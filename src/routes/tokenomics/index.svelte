@@ -5,11 +5,67 @@
 	import TokenDistributionChart from '$lib/components/Tokenomics/TokenDistributionChart.svelte';
 	import TokenDistributionTable from '$lib/components/Tokenomics/TokenDistributionTable.svelte';
 	import VestingScheduleChart from '$lib/components/Tokenomics/VestingScheduleChart.svelte';
+	import { onMount } from 'svelte';
 
-	let totalSupply = 0;
+	const distribution = [
+		{
+			type: 'Team',
+			allocated: 100000000,
+			distributed: 0,
+			category: 'team',
+			isVesting: true
+		},
+		{
+			type: 'Marketing & Partnership',
+			allocated: 100000000,
+			distributed: 20000000,
+			category: 'spend',
+			isVesting: false
+		},
+		{
+			type: 'Foundation Reserve',
+			allocated: 300000000,
+			distributed: 0,
+			category: 'foundation',
+			isVesting: true
+		},
+		{
+			type: 'Tinyman Liquidity Pool',
+			allocated: 62500000,
+			distributed: 62500000,
+			category: 'community',
+			isVesting: false
+		},
+		{
+			type: 'Initial Airdrops & Giveaways',
+			allocated: 187500000,
+			distributed: 156250000,
+			category: 'community',
+			isVesting: false
+		},
+		{
+			type: 'Liquidity Provider Rewards',
+			allocated: 125000000,
+			distributed: 71000000,
+			category: 'community',
+			isVesting: false
+		},
+		{
+			type: 'Platform Participation Rewards',
+			allocated: 125000000,
+			distributed: 0,
+			category: 'community',
+			isVesting: false
+		}
+	];
+
+	let totalSupply = 1000000000;
 	let circulatingSupply = 0;
 	let reserveSupply = 0;
-	let isLoading = false;
+	let distributedSupply = 0;
+	let isLoading = true;
+
+	distribution.map((d) => (distributedSupply += d.distributed));
 
 	const loadTokenData = () => {
 		fetch(`tokenomics.json`)
@@ -23,7 +79,9 @@
 			.finally(() => (isLoading = false));
 	};
 
-	loadTokenData();
+	onMount(() => {
+		loadTokenData();
+	});
 </script>
 
 <PageHeader title="DPANDA <br/>Tokenomics" backLink="/" />
@@ -49,23 +107,29 @@
 			<div>
 				<TokenDistributionChart />
 			</div>
-			<div class="distribution-chart__values">
-				<div class="distribution-chart__value">
-					<h4>Total Supply</h4>
-					<span>{totalSupply.toLocaleString()}</span>
+			{#if !isLoading}
+				<div class="distribution-chart__values">
+					<div class="distribution-chart__value">
+						<h4>Total Supply</h4>
+						<span>{totalSupply.toLocaleString()}</span>
+					</div>
+					<div class="distribution-chart__value">
+						<h4>Reserve Supply</h4>
+						<span>{reserveSupply.toLocaleString()}</span>
+					</div>
+					<div class="distribution-chart__value">
+						<h4>Circulating Supply</h4>
+						<span>{circulatingSupply.toLocaleString()}</span>
+					</div>
+					<div class="distribution-chart__value">
+						<h4>Unallocated Reserve</h4>
+						<span>{(distributedSupply - circulatingSupply).toLocaleString()}</span>
+					</div>
 				</div>
-				<div class="distribution-chart__value">
-					<h4>Reserve Supply</h4>
-					<span>{reserveSupply.toLocaleString()}</span>
-				</div>
-				<div class="distribution-chart__value">
-					<h4>Circulating Supply</h4>
-					<span>{circulatingSupply.toLocaleString()}</span>
-				</div>
-			</div>
+			{/if}
 		</div>
 
-		<TokenDistributionTable />
+		<TokenDistributionTable {totalSupply} {distribution} />
 	</section>
 
 	<section id="vesting" class="section-vesting">
@@ -137,14 +201,6 @@
 		}
 	}
 
-	.section-overview {
-		padding: 0;
-
-		p {
-			font-size: 1.5rem;
-		}
-	}
-
 	.section-distribution {
 		.distribution-chart {
 			display: flex;
@@ -193,34 +249,6 @@
 
 				@media screen and (min-width: 768px) {
 					font-size: 3rem;
-				}
-			}
-		}
-	}
-
-	.section-usecases {
-		ul {
-			display: grid;
-			gap: 2rem;
-			grid-template-columns: 1fr 1fr;
-			padding: 0;
-			margin: 0;
-			list-style: none;
-			margin-top: 2rem;
-
-			li {
-				padding: 2rem;
-				border-radius: 0.25rem;
-				background-color: #eee;
-
-				h4 {
-					font-size: 1.25rem;
-				}
-
-				&.active {
-					color: #fff;
-					background: linear-gradient(109.08deg, #fd9d5d 0%, #fd2ca0 49.53%, #3397ff 104.51%);
-					box-shadow: 6px 13px 20px rgba(7, 7, 7, 0.1);
 				}
 			}
 		}
