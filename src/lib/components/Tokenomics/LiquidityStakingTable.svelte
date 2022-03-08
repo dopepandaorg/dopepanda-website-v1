@@ -165,7 +165,7 @@
 			<td>{durationAlgoStakeLP} days</td>
 			<td>
 				1LP → 200 DPANDA
-				<span><a href="#">See reward schedule</a></span>
+				<span><a href="https://dopepanda.medium.com/moving-away-from-lp-competition-stake-your-algo-dpanda-lp-tokens-with-algostake-801557fb7caa" target="_blank">See reward schedule</a></span>
 			</td>
 			<td>
 				<a href="https://app.algostake.org" target="_blank">Stake Now ↗</a>
