@@ -51,27 +51,40 @@
 				<small>Done</small>
 				Whitepaper
 			</div>
-			<div class="roadmap__item in-progress">
-				<small>Community</small>
+			<div class="roadmap__item completed">
+				<small>Done</small>
+				Algorand Foundation Grant
+			</div>
+			<div class="roadmap__item completed">
+				<small>Done</small>
 				Voting & Participation
 			</div>
-			<div class="roadmap__item in-progress">
-				<small>NFT Marketplace</small>
+			<div class="roadmap__item completed">
+				<small>Done</small>
 				Content Tokenization (ASA)
-			</div>
-			<div class="roadmap__item">
-				<small>NFT Marketplace</small>
-				Content Curation
-			</div>
-			<div class="roadmap__item">
-				<small>NFT Marketplace</small>
-				Marketplace Launch
 			</div>
 		</div>
 	</div>
 	<div class="roadmap__category">
-		<div class="roadmap__category__title">Q2 2022</div>
+		<div class="roadmap__category__title">April 2022 (moved over from Q1 2022)</div>
 		<div class="roadmap__items">
+			<div class="roadmap__item in-progress">
+				<small>NFT Marketplace</small>
+				Content Curation
+			</div>
+			<div class="roadmap__item  in-progress">
+				<small>NFT Marketplace</small>
+				Marketplace Testnet
+			</div>
+		</div>
+	</div>
+	<div class="roadmap__category">
+		<div class="roadmap__category__title">May 2022</div>
+		<div class="roadmap__items">
+			<div class="roadmap__item">
+				<small>NFT Marketplace</small>
+				Marketplace Mainnet Launch
+			</div>
 			<div class="roadmap__item">
 				<small>Platform</small>
 				Content Subscriptions
@@ -82,20 +95,29 @@
 			</div>
 			<div class="roadmap__item">
 				<small>Platform</small>
-				Crowdfunding
-			</div>
-			<div class="roadmap__item">
-				<small>Platform</small>
-				Platform Launch
-			</div>
-			<div class="roadmap__item">
-				<small>Community</small>
-				Airdrop Final
+				Platform Testnet
 			</div>
 		</div>
 	</div>
 	<div class="roadmap__category">
-		<div class="roadmap__category__title">Q3 2022</div>
+		<div class="roadmap__category__title">June 2022</div>
+		<div class="roadmap__items">
+			<div class="roadmap__item">
+				<small>Platform</small>
+				Platform Mainnet Launch
+			</div>
+			<div class="roadmap__item">
+				<small>Platform</small>
+				Crowdfunding Mainnet Launch
+			</div>
+			<div class="roadmap__item">
+				<small>Community</small>
+				Participation Rewards
+			</div>
+		</div>
+	</div>
+	<div class="roadmap__category">
+		<div class="roadmap__category__title">Q3 2022 and Beyond</div>
 		<div class="roadmap__items">
 			<div class="roadmap__item">
 				<small>Dopeverse</small>
