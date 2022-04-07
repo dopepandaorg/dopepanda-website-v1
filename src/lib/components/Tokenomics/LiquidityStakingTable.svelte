@@ -1,34 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	const DAYS_MULTIPLIER = 1000 * 3600 * 24;
-	let apyYieldlyStake = 0;
-	let apyYieldlyLPStake = 0;
 	let apyAlgoStake = 25;
 
-	let durationYieldly = Math.round(
-		(new Date('2022-04-07').getTime() - new Date().getTime()) / DAYS_MULTIPLIER
-	);
 	let durationAlgoStake = Math.round(
 		(new Date('2022-06-01').getTime() - new Date().getTime()) / DAYS_MULTIPLIER
 	);
 	let durationAlgoStakeLP = Math.round(
 		(new Date('2022-12-01').getTime() - new Date().getTime()) / DAYS_MULTIPLIER
 	);
-
-	const loadYieldlyAPY = () => {
-		fetch('https://app.yieldly.finance/staking/pools/v3/617707129')
-			.then((response) => response.json())
-			.then((body) => (apyYieldlyStake = body.apy));
-
-		fetch('https://app.yieldly.finance/staking/pools/v3/617728717')
-			.then((response) => response.json())
-			.then((body) => (apyYieldlyLPStake = body.apy));
-	};
-
-	onMount(() => {
-		loadYieldlyAPY();
-	});
 </script>
 
 <table>
@@ -42,37 +21,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>
-				<img src="/icons/yieldly.svg" alt="YLDY" class="token-image" />
-				Yieldly
-				<span>ASA Staking</span>
-			</td>
-			<td>
-				<div class="flex-row">
-					<div class="stake-item">
-						<img src="/icons/yieldly.svg" alt="YLDY" class="token-image" />
-						<div class="stake-item__value">
-							<span>Stake</span>
-							<strong>YLDY</strong>
-						</div>
-					</div>
-					→
-					<div class="stake-item">
-						<img src="/apple-icon.png" alt="DPANDA" class="token-image" />
-						<div class="stake-item__value">
-							<span>Earn</span>
-							<strong>DPANDA</strong>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td>{durationYieldly} days</td>
-			<td>~{apyYieldlyStake.toFixed(2)}% APY</td>
-			<td>
-				<a href="https://app.yieldly.finance" target="_blank">Stake Now ↗</a>
-			</td>
-		</tr>
 		<tr>
 			<td>
 				<img src="/icons/algostake.svg" alt="STKE" class="token-image" />
@@ -106,38 +54,6 @@
 		</tr>
 		<tr>
 			<td>
-				<img src="/icons/yieldly.svg" alt="YLDY" class="token-image" />
-				Yieldly
-				<span>Liquidity Staking</span>
-			</td>
-			<td>
-				<div class="flex-row">
-					<div class="stake-item">
-						<img src="/icons/yieldly.svg" alt="YLDY" class="token-image" />
-						<img src="/apple-icon.png" alt="DPANDA" class="token-image" />
-						<div class="stake-item__value">
-							<span>Stake LP</span>
-							<strong>YLDY/DPANDA</strong>
-						</div>
-					</div>
-					→
-					<div class="stake-item">
-						<img src="/icons/yieldly.svg" alt="YLDY" class="token-image" />
-						<div class="stake-item__value">
-							<span>Earn</span>
-							<strong>YLDY</strong>
-						</div>
-					</div>
-				</div>
-			</td>
-			<td>{durationYieldly} days</td>
-			<td>~{apyYieldlyLPStake.toFixed(2)}% APY</td>
-			<td>
-				<a href="https://app.yieldly.finance" target="_blank">Stake Now ↗</a>
-			</td>
-		</tr>
-		<tr>
-			<td>
 				<img src="/icons/algostake.svg" alt="STKE" class="token-image" />
 				AlgoStake
 				<span>Liquidity Staking</span>
@@ -164,7 +80,7 @@
 			</td>
 			<td>{durationAlgoStakeLP} days</td>
 			<td>
-				1LP → 200 DPANDA
+				1LP → 175 DPANDA
 				<span><a href="https://dopepanda.medium.com/moving-away-from-lp-competition-stake-your-algo-dpanda-lp-tokens-with-algostake-801557fb7caa" target="_blank">See reward schedule</a></span>
 			</td>
 			<td>
