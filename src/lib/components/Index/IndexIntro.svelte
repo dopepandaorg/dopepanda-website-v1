@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	const navigateRoadmap = () => {
 		document.getElementById('roadmap').scrollIntoView({ behavior: 'smooth' });
 	};
 	const navigateNFT = () => {
 		document.getElementById('nft').scrollIntoView({ behavior: 'smooth' });
 	};
-	const navigateLeaderboard = () => {
-		goto('/tokenomics');
+	const navigateMarketplace = () => {
+		window.open('https://app.dopepanda.org', '_blank')
 	};
 </script>
 
@@ -33,8 +31,8 @@
 				</p>
 			</div>
 			<div class="section__cta">
-				<button on:click={navigateLeaderboard}
-					>Tokenomics<img src="/images/badge-new.svg" alt="New" /></button
+				<button on:click={navigateMarketplace}
+					>Visit Marketplace<img src="/images/badge-new.svg" alt="New" /></button
 				>
 				<a href="https://docsend.com/view/w8bivjdueavgce9h" target="_blank"
 					><button>Whitepaper</button></a

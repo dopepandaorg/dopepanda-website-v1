@@ -68,28 +68,28 @@
 	<div class="roadmap__category">
 		<div class="roadmap__category__title">April 2022 (moved over from Q1 2022)</div>
 		<div class="roadmap__items">
-			<div class="roadmap__item in-progress">
-				<small>NFT Marketplace</small>
+			<div class="roadmap__item completed">
+				<small>Done</small>
 				Content Curation
 			</div>
-			<div class="roadmap__item  in-progress">
-				<small>NFT Marketplace</small>
+			<div class="roadmap__item completed">
+				<small>Done</small>
 				Marketplace Testnet
 			</div>
 		</div>
 	</div>
 	<div class="roadmap__category">
-		<div class="roadmap__category__title">May 2022</div>
+		<div class="roadmap__category__title">Q2 2022</div>
 		<div class="roadmap__items">
-			<div class="roadmap__item">
-				<small>NFT Marketplace</small>
+			<div class="roadmap__item completed">
+				<small>Done</small>
 				Marketplace Mainnet Launch
 			</div>
-			<div class="roadmap__item">
+			<div class="roadmap__item in-progress">
 				<small>Platform</small>
 				Content Subscriptions
 			</div>
-			<div class="roadmap__item">
+			<div class="roadmap__item in-progress">
 				<small>Platform</small>
 				Content Analytics
 			</div>
@@ -100,7 +100,7 @@
 		</div>
 	</div>
 	<div class="roadmap__category">
-		<div class="roadmap__category__title">June 2022</div>
+		<div class="roadmap__category__title">Q3 2022</div>
 		<div class="roadmap__items">
 			<div class="roadmap__item">
 				<small>Platform</small>
@@ -117,7 +117,7 @@
 		</div>
 	</div>
 	<div class="roadmap__category">
-		<div class="roadmap__category__title">Q3 2022 and Beyond</div>
+		<div class="roadmap__category__title">Q4 2022 and Beyond</div>
 		<div class="roadmap__items">
 			<div class="roadmap__item">
 				<small>Dopeverse</small>
